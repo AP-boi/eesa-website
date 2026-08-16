@@ -1,0 +1,275 @@
+import React, { useState, useEffect } from 'react';
+import { X, Sparkles, CheckCircle2, Phone, Mail, User, Calendar, MapPin, Clock } from 'lucide-react';
+import { Course, DeliveryMode, LeadBooking } from '../../types/database';
+import { submitLeadBooking } from '../../lib/supabase';
+
+interface LeadModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  courses: Course[];
+  initialCourseId?: string;
+  defaultBookingType?: 'free_demo' | 'diagnostic_test' | 'profile_evaluation' | 'mock_interview' | 'prospectus_download' | 'contact';
+}
+
+export const LeadModal: React.FC<LeadModalProps> = ({
+  isOpen,
+  onClose,
+  courses,
+  initialCourseId,
+  defaultBookingType = 'free_demo'
+}) => {
+  const [fullName, setFullName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [selectedCourseId, setSelectedCourseId] = useState(initialCourseId || '');
+  const [bookingType, setBookingType] = useState(defaultBookingType);
+  const [preferredMode, setPreferredMode] = useState<DeliveryMode>('offline');
+  const [preferredTimeSlot, setPreferredTimeSlot] = useState('Morning (7-10 AM)');
+  const [notes, setNotes] = useState('');
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (initialCourseId) {
+      setSelectedCourseId(initialCourseId);
+    }
+  }, [initialCourseId]);
+
+  if (!isOpen) return null;
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!fullName || !phone) return;
+
+    setIsSubmitting(true);
+    const booking: LeadBooking = {
+      full_name: fullName,
+      phone,
+      email: email || `${phone}@eesa-applicant.com`,
+      preferred_course_id: selectedCourseId || null,
+      booking_type: bookingType,
+      preferred_mode: preferredMode,
+      preferred_time_slot: preferredTimeSlot,
+      notes,
+    };
+
+    const res = await submitLeadBooking(booking);
+    setIsSubmitting(false);
+    if (res.success) {
+      setIsSubmitted(true);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
+      <div
+        className="relative w-full max-w-xl bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden my-8"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 text-white p-6 relative">
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 text-slate-400 hover:text-white p-1 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          >
+            <X className="w-5 h-5" />
+          </button>
+          <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-1">
+            <Sparkles className="w-4 h-4" /> EESA Academy Registration
+          </div>
+          <h3 className="text-2xl font-black tracking-tight text-white">
+            {bookingType === 'free_demo' && 'Book Free Demo Class'}
+            {bookingType === 'diagnostic_test' && 'Book Level Diagnostic Test'}
+            {bookingType === 'profile_evaluation' && 'Book Overseas Profile Audit'}
+            {bookingType === 'prospectus_download' && 'Download Complete Prospectus'}
+            {bookingType === 'contact' && 'Request Callback from Faculty'}
+          </h3>
+          <p className="text-xs text-slate-300 mt-1">
+            📍 Campus adjacent to Dashrath Puri Metro Station (Gate 1), West Delhi
+          </p>
+        </div>
+
+        {/* Content */}
+        <div className="p-6 max-h-[80vh] overflow-y-auto">
+          {isSubmitted ? (
+            <div className="text-center py-8 space-y-4">
+              <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto animate-bounce">
+                <CheckCircle2 className="w-10 h-10" />
+              </div>
+              <h4 className="text-2xl font-bold text-slate-900">Seat Reserved Successfully!</h4>
+              <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
+                Thank you, <strong className="text-slate-900">{fullName}</strong>. Senior Faculty member Prashant Sir / Admissions Office will contact you on <strong className="text-blue-600">{phone}</strong> within 30 minutes to confirm your preferred time slot.
+              </p>
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs text-slate-700 space-y-1.5 text-left max-w-sm mx-auto">
+                <p className="font-bold text-slate-900">📍 Direct Walk-in Campus Location:</p>
+                <p>RZ-A-1/14B, First Floor, Vijay Enclave, Opp. Shani Dev Mandir, Dabri-Palam Road, New Delhi - 110045.</p>
+                <p className="text-emerald-700 font-semibold mt-1">📞 Immediate Helpline: +91 98101 26691</p>
+              </div>
+              <div className="pt-4">
+                <button
+                  onClick={onClose}
+                  className="bg-blue-600 text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-md hover:bg-blue-700 transition-all"
+                >
+                  Done & Return
+                </button>
+              </div>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Full Name */}
+              <div>
+                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                  Full Name <span className="text-red-500">*</span>
+                </label>
+                <div className="relative">
+                  <User className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+                  <input
+                    type="text"
+                    required
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    placeholder="e.g. Anjali Sharma"
+                    className="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none"
+                  />
+                </div>
+              </div>
+
+              {/* Phone & Email */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                    Mobile Number (WhatsApp) <span className="text-red-500">*</span>
+                  </label>
+                  <div className="relative">
+                    <Phone className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+                    <input
+                      type="tel"
+                      required
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      placeholder="+91 98101 26691"
+                      className="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none font-semibold text-slate-900"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                    Email Address (Optional)
+                  </label>
+                  <div className="relative">
+                    <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="name@gmail.com"
+                      className="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Target Course Select */}
+              <div>
+                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                  Target Program / Course
+                </label>
+                <select
+                  value={selectedCourseId}
+                  onChange={(e) => setSelectedCourseId(e.target.value)}
+                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none font-medium text-slate-800"
+                >
+                  <option value="">Select Course (Or talk to Counselor)</option>
+                  {courses.map((c) => (
+                    <option key={c.id} value={c.id}>
+                      {c.title}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Preferred Mode & Time Slot */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                    Learning Mode
+                  </label>
+                  <select
+                    value={preferredMode}
+                    onChange={(e) => setPreferredMode(e.target.value as DeliveryMode)}
+                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-blue-600 outline-none"
+                  >
+                    <option value="offline">Offline AC Classroom (Dashrath Puri)</option>
+                    <option value="online_live">Live Interactive Online</option>
+                    <option value="hybrid">Hybrid (Offline + Live)</option>
+                    <option value="one_on_one">1-on-1 VIP Mentorship</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                    Preferred Batch Time
+                  </label>
+                  <select
+                    value={preferredTimeSlot}
+                    onChange={(e) => setPreferredTimeSlot(e.target.value)}
+                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-blue-600 outline-none"
+                  >
+                    <option value="Morning (7-10 AM)">Early Morning (7:00 - 10:00 AM)</option>
+                    <option value="Midday (10 AM-1 PM)">Midday Batch (10:00 AM - 1:00 PM)</option>
+                    <option value="Afternoon (2-5 PM)">Afternoon Batch (2:00 - 5:00 PM)</option>
+                    <option value="Evening (5-8 PM)">Evening Batch (5:00 - 8:00 PM)</option>
+                    <option value="Weekend Special">Weekend Special (Sat & Sun)</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Notes / Special Request */}
+              <div>
+                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                  Target Exam / Target Score / Notes
+                </label>
+                <textarea
+                  rows={2}
+                  value={notes}
+                  onChange={(e) => setNotes(e.target.value)}
+                  placeholder="e.g., Aiming for IELTS 7.5 for Canada PR or OET Grade B Nurse shift timing..."
+                  className="w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-blue-600 outline-none resize-none"
+                />
+              </div>
+
+              {/* Trust Callout */}
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 text-xs text-blue-900 flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
+                <span>
+                  <strong>Zero Obligation:</strong> Free demo class includes a full 45-minute interactive diagnostic assessment with Prashant Sir.
+                </span>
+              </div>
+
+              {/* Submit CTA */}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-black py-3.5 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all transform active:scale-98 flex items-center justify-center gap-2 text-base"
+              >
+                {isSubmitting ? (
+                  <span className="flex items-center gap-2">
+                    <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                    Processing Registration...
+                  </span>
+                ) : (
+                  <>
+                    <Sparkles className="w-5 h-5" />
+                    <span>Confirm Free Demo Class Registration</span>
+                  </>
+                )}
+              </button>
+            </form>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
