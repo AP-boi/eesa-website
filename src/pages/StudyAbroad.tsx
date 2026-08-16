@@ -137,10 +137,10 @@ export const StudyAbroad: React.FC<StudyAbroadProps> = ({ courses, onOpenDemoMod
       {/* HIGH-STAKES TEST DEEP-DIVE TABS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-8">
-          <span className="text-xs font-extrabold text-blue-600 uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+          <span className="text-xs font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-wider bg-blue-50 dark:bg-blue-950/60 px-3 py-1 rounded-full border border-blue-200/60 dark:border-blue-800">
             Target Exam Modules
           </span>
-          <h2 className="text-3xl font-black text-slate-900 tracking-tight mt-3">
+          <h2 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight mt-3">
             International Exam Preparation Breakdown
           </h2>
         </div>
@@ -160,7 +160,7 @@ export const StudyAbroad: React.FC<StudyAbroadProps> = ({ courses, onOpenDemoMod
               className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all border ${
                 activeTestTab === t.id
                   ? 'bg-blue-600 text-white border-blue-600 shadow-md'
-                  : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
+                  : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800'
               }`}
             >
               {t.label}
@@ -169,38 +169,38 @@ export const StudyAbroad: React.FC<StudyAbroadProps> = ({ courses, onOpenDemoMod
         </div>
 
         {/* Tab Content Box */}
-        <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-xl">
+        <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 shadow-xl">
           {activeTestTab === 'ielts' && (
             <div className="space-y-6">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
                 <div>
-                  <h3 className="text-2xl font-black text-slate-900">IELTS Academic & General Training</h3>
-                  <p className="text-xs text-slate-500 mt-1">Target Band 7.5 - 8.5 with daily essay correction & speaking mock interviews.</p>
+                  <h3 className="text-2xl font-black text-slate-900 dark:text-white">IELTS Academic & General Training</h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Target Band 7.5 - 8.5 with daily essay correction & speaking mock interviews.</p>
                 </div>
                 <button
                   onClick={() => onOpenDemoModal('c2', 'free_demo')}
-                  className="bg-blue-600 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow-xs"
+                  className="bg-blue-600 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow-xs cursor-pointer"
                 >
                   Book Free IELTS Class
                 </button>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                  <h4 className="font-bold text-slate-900 text-sm text-blue-700">Writing Task 1 & 2</h4>
-                  <p className="text-xs text-slate-600 mt-1">Line graph analysis, complex sentence templates, lexical resource enrichment.</p>
+                <div className="bg-slate-50 dark:bg-slate-800/60 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                  <h4 className="font-bold text-slate-900 dark:text-white text-sm text-blue-700 dark:text-blue-400">Writing Task 1 & 2</h4>
+                  <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">Line graph analysis, complex sentence templates, lexical resource enrichment.</p>
                 </div>
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                  <h4 className="font-bold text-slate-900 text-sm text-blue-700">Speaking Cue Cards</h4>
-                  <p className="text-xs text-slate-600 mt-1">1-on-1 mock panel daily with Prashant Sir for fluency and accent calibration.</p>
+                <div className="bg-slate-50 dark:bg-slate-800/60 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                  <h4 className="font-bold text-slate-900 dark:text-white text-sm text-blue-700 dark:text-blue-400">Speaking Cue Cards</h4>
+                  <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">1-on-1 mock panel daily with Prashant Sir for fluency and accent calibration.</p>
                 </div>
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                  <h4 className="font-bold text-slate-900 text-sm text-blue-700">Reading Speed Drills</h4>
-                  <p className="text-xs text-slate-600 mt-1">Skimming, scanning, True/False/Not Given shortcuts and time management.</p>
+                <div className="bg-slate-50 dark:bg-slate-800/60 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                  <h4 className="font-bold text-slate-900 dark:text-white text-sm text-blue-700 dark:text-blue-400">Reading Speed Drills</h4>
+                  <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">Skimming, scanning, True/False/Not Given shortcuts and time management.</p>
                 </div>
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                  <h4 className="font-bold text-slate-900 text-sm text-blue-700">Listening Strategy</h4>
-                  <p className="text-xs text-slate-600 mt-1">Accent familiarity (British, Australian, American) and keyword tracking.</p>
+                <div className="bg-slate-50 dark:bg-slate-800/60 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                  <h4 className="font-bold text-slate-900 dark:text-white text-sm text-blue-700 dark:text-blue-400">Listening Strategy</h4>
+                  <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">Accent familiarity (British, Australian, American) and keyword tracking.</p>
                 </div>
               </div>
             </div>
@@ -208,31 +208,31 @@ export const StudyAbroad: React.FC<StudyAbroadProps> = ({ courses, onOpenDemoMod
 
           {activeTestTab === 'pte' && (
             <div className="space-y-6">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
                 <div>
-                  <h3 className="text-2xl font-black text-slate-900">PTE Academic Masterclass</h3>
-                  <p className="text-xs text-slate-500 mt-1">Target 79+ score with dedicated computer practice lab & AI scoring shortcuts.</p>
+                  <h3 className="text-2xl font-black text-slate-900 dark:text-white">PTE Academic Masterclass</h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Target 79+ score with dedicated computer practice lab & AI scoring shortcuts.</p>
                 </div>
                 <button
                   onClick={() => onOpenDemoModal('c3', 'free_demo')}
-                  className="bg-blue-600 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow-xs"
+                  className="bg-blue-600 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow-xs cursor-pointer"
                 >
                   Book Free PTE Lab Demo
                 </button>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                  <h4 className="font-bold text-slate-900 text-sm">Read Aloud & Repeat Sentence</h4>
-                  <p className="text-xs text-slate-600 mt-1">Oral fluency tuning to ensure high AI speech recognition scoring.</p>
+                <div className="bg-slate-50 dark:bg-slate-800/60 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                  <h4 className="font-bold text-slate-900 dark:text-white text-sm">Read Aloud & Repeat Sentence</h4>
+                  <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">Oral fluency tuning to ensure high AI speech recognition scoring.</p>
                 </div>
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                  <h4 className="font-bold text-slate-900 text-sm">Write From Dictation</h4>
-                  <p className="text-xs text-slate-600 mt-1">Shortcuts and memory techniques to score maximum points in writing/listening.</p>
+                <div className="bg-slate-50 dark:bg-slate-800/60 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                  <h4 className="font-bold text-slate-900 dark:text-white text-sm">Write From Dictation</h4>
+                  <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">Shortcuts and memory techniques to score maximum points in writing/listening.</p>
                 </div>
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                  <h4 className="font-bold text-slate-900 text-sm">Full Computer Lab Access</h4>
-                  <p className="text-xs text-slate-600 mt-1">Practice on exact exam software patterns at Dashrath Puri campus.</p>
+                <div className="bg-slate-50 dark:bg-slate-800/60 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                  <h4 className="font-bold text-slate-900 dark:text-white text-sm">Full Computer Lab Access</h4>
+                  <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">Practice on exact exam software patterns at Dashrath Puri campus.</p>
                 </div>
               </div>
             </div>
@@ -240,22 +240,22 @@ export const StudyAbroad: React.FC<StudyAbroadProps> = ({ courses, onOpenDemoMod
 
           {activeTestTab === 'oet' && (
             <div className="space-y-4">
-              <h3 className="text-2xl font-black text-slate-900">OET Healthcare Specialization Details</h3>
-              <p className="text-xs text-slate-600">See spotlight section above for complete OET Nurse/Doctor training roadmap.</p>
+              <h3 className="text-2xl font-black text-slate-900 dark:text-white">OET Healthcare Specialization Details</h3>
+              <p className="text-xs text-slate-600 dark:text-slate-300">See spotlight section above for complete OET Nurse/Doctor training roadmap.</p>
             </div>
           )}
 
           {activeTestTab === 'celpip' && (
             <div className="space-y-4">
-              <h3 className="text-2xl font-black text-slate-900">CELPIP General (Canadian PR Visa)</h3>
-              <p className="text-xs text-slate-600">Computer-delivered Canadian English test coaching with high-scoring template banks.</p>
+              <h3 className="text-2xl font-black text-slate-900 dark:text-white">CELPIP General (Canadian PR Visa)</h3>
+              <p className="text-xs text-slate-600 dark:text-slate-300">Computer-delivered Canadian English test coaching with high-scoring template banks.</p>
             </div>
           )}
 
           {activeTestTab === 'det' && (
             <div className="space-y-4">
-              <h3 className="text-2xl font-black text-slate-900">Duolingo English Test (DET Speed Course)</h3>
-              <p className="text-xs text-slate-600">Adaptive computer test strategies for rapid university admissions in USA & Europe.</p>
+              <h3 className="text-2xl font-black text-slate-900 dark:text-white">Duolingo English Test (DET Speed Course)</h3>
+              <p className="text-xs text-slate-600 dark:text-slate-300">Adaptive computer test strategies for rapid university admissions in USA & Europe.</p>
             </div>
           )}
         </div>
@@ -263,42 +263,42 @@ export const StudyAbroad: React.FC<StudyAbroadProps> = ({ courses, onOpenDemoMod
 
       {/* OVERSEAS COUNSELING & PLACEMENT SERVICES */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-slate-50 rounded-3xl p-8 sm:p-12 border border-slate-200">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-3xl p-8 sm:p-12 border border-slate-200 dark:border-slate-800">
           <div className="max-w-3xl mb-8">
-            <span className="text-xs font-extrabold text-blue-600 uppercase tracking-wider bg-blue-100 px-3 py-1 rounded-full border border-blue-200">
+            <span className="text-xs font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-wider bg-blue-100 dark:bg-blue-950/60 px-3 py-1 rounded-full border border-blue-200/60 dark:border-blue-800">
               End-to-End Overseas Placement
             </span>
-            <h2 className="text-3xl font-black text-slate-900 tracking-tight mt-3">
+            <h2 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight mt-3">
               Study Abroad Counseling & Visa Filing
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 mt-1">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">
               Guiding students through university shortlisting, SOP polish, scholarship aid, and visa interview prep.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs space-y-2">
-              <Compass className="w-8 h-8 text-blue-600" />
-              <h4 className="font-bold text-slate-900 text-sm">University Shortlisting</h4>
-              <p className="text-xs text-slate-500">Mapping academic background to top UK, Canada, Australia, and US universities.</p>
+            <div className="bg-white dark:bg-slate-950 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs space-y-2">
+              <Compass className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+              <h4 className="font-bold text-slate-900 dark:text-white text-sm">University Shortlisting</h4>
+              <p className="text-xs text-slate-500 dark:text-slate-400">Mapping academic background to top UK, Canada, Australia, and US universities.</p>
             </div>
 
-            <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs space-y-2">
-              <FileText className="w-8 h-8 text-emerald-600" />
-              <h4 className="font-bold text-slate-900 text-sm">SOP & LOR Editing</h4>
-              <p className="text-xs text-slate-500">Crafting compelling Statements of Purpose and Recommendation Letters.</p>
+            <div className="bg-white dark:bg-slate-950 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs space-y-2">
+              <FileText className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
+              <h4 className="font-bold text-slate-900 dark:text-white text-sm">SOP & LOR Editing</h4>
+              <p className="text-xs text-slate-500 dark:text-slate-400">Crafting compelling Statements of Purpose and Recommendation Letters.</p>
             </div>
 
-            <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs space-y-2">
-              <ShieldCheck className="w-8 h-8 text-blue-600" />
-              <h4 className="font-bold text-slate-900 text-sm">Visa Filing Assistance</h4>
-              <p className="text-xs text-slate-500">100% compliant visa file compilation and mock visa interview sessions.</p>
+            <div className="bg-white dark:bg-slate-950 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs space-y-2">
+              <ShieldCheck className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+              <h4 className="font-bold text-slate-900 dark:text-white text-sm">Visa Filing Assistance</h4>
+              <p className="text-xs text-slate-500 dark:text-slate-400">100% compliant visa file compilation and mock visa interview sessions.</p>
             </div>
 
-            <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs space-y-2">
-              <Award className="w-8 h-8 text-emerald-600" />
-              <h4 className="font-bold text-slate-900 text-sm">Scholarship Guidance</h4>
-              <p className="text-xs text-slate-500">Helping students secure partial and full merit tuition waivers.</p>
+            <div className="bg-white dark:bg-slate-950 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs space-y-2">
+              <Award className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
+              <h4 className="font-bold text-slate-900 dark:text-white text-sm">Scholarship Guidance</h4>
+              <p className="text-xs text-slate-500 dark:text-slate-400">Helping students secure partial and full merit tuition waivers.</p>
             </div>
           </div>
         </div>

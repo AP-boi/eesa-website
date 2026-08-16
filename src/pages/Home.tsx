@@ -28,27 +28,27 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
     <div className="space-y-20 sm:space-y-32 pb-24">
       
       {/* CLEAN MINIMAL HERO SECTION */}
-      <section className="relative pt-12 sm:pt-16 pb-20 bg-gradient-to-b from-slate-100/60 via-white to-slate-50 border-b border-slate-200/60">
+      <section className="relative pt-12 sm:pt-16 pb-20 bg-gradient-to-b from-slate-100/60 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900/60 dark:to-slate-950 border-b border-slate-200/60 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Left Column: Headline & Value Prop */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 bg-blue-50/80 text-blue-700 border border-blue-200/80 px-3.5 py-1 rounded-full text-xs font-semibold">
-                <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+              <div className="inline-flex items-center gap-2 bg-blue-50/80 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/80 dark:border-blue-800 px-3.5 py-1 rounded-full text-xs font-semibold">
+                <Sparkles className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                 <span>West Delhi's Premier English & Test Prep Institute</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.15]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.15]">
                 Master English & Ace Exams at{' '}
-                <span className="text-blue-600">
+                <span className="text-blue-600 dark:text-blue-400">
                   Dashrath Puri's Elite Academy
                 </span>
               </h1>
 
-              <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal max-w-2xl">
+              <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal max-w-2xl">
                 Transforming confidence, IELTS (Band 8.0+), PTE (79+), OET (Grade B), and global careers for{' '}
-                <strong className="text-slate-900 font-semibold">5,000+ alumni</strong> across West Delhi with 1-on-1 mentorship by senior mentor <strong className="text-blue-600 font-semibold">Prashant Sir</strong>.
+                <strong className="text-slate-900 dark:text-white font-semibold">5,000+ alumni</strong> across West Delhi with 1-on-1 mentorship by senior mentor <strong className="text-blue-600 dark:text-blue-400 font-semibold">Prashant Sir</strong>.
               </p>
 
               {/* Magnetic Action Buttons */}
@@ -66,30 +66,30 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
 
                 <button
                   onClick={() => onNavigate('courses')}
-                  className="bg-white hover:bg-slate-50 text-slate-700 font-semibold px-6 py-3.5 rounded-xl border border-slate-200/80 shadow-xs transition-all flex items-center justify-center gap-2 text-sm cursor-pointer"
+                  className="bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold px-6 py-3.5 rounded-xl border border-slate-200/80 dark:border-slate-800 shadow-xs transition-all flex items-center justify-center gap-2 text-sm cursor-pointer"
                 >
-                  <BookOpen className="w-4 h-4 text-slate-500" />
+                  <BookOpen className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                   <span>Explore Programs</span>
                 </button>
               </div>
 
               {/* Minimal Trust Metrics Bar */}
-              <div className="pt-8 border-t border-slate-200/80 grid grid-cols-2 sm:grid-cols-4 gap-6 text-slate-700">
+              <div className="pt-8 border-t border-slate-200/80 dark:border-slate-800 grid grid-cols-2 sm:grid-cols-4 gap-6 text-slate-700 dark:text-slate-300">
                 <div>
-                  <span className="text-2xl font-black text-slate-900 block">4.9 ★</span>
-                  <span className="text-xs text-slate-500">315+ Justdial Reviews</span>
+                  <span className="text-2xl font-black text-slate-900 dark:text-white block">4.9 ★</span>
+                  <span className="text-xs text-slate-500 dark:text-slate-400">315+ Justdial Reviews</span>
                 </div>
                 <div>
-                  <span className="text-2xl font-black text-slate-900 block">5,000+</span>
-                  <span className="text-xs text-slate-500">Trained Alumni</span>
+                  <span className="text-2xl font-black text-slate-900 dark:text-white block">5,000+</span>
+                  <span className="text-xs text-slate-500 dark:text-slate-400">Trained Alumni</span>
                 </div>
                 <div>
-                  <span className="text-2xl font-black text-slate-900 block">Max 8</span>
-                  <span className="text-xs text-slate-500">Small Batch Limit</span>
+                  <span className="text-2xl font-black text-slate-900 dark:text-white block">Max 8</span>
+                  <span className="text-xs text-slate-500 dark:text-slate-400">Small Batch Limit</span>
                 </div>
                 <div>
-                  <span className="text-2xl font-black text-slate-900 block">100%</span>
-                  <span className="text-xs text-slate-500">Placement Support</span>
+                  <span className="text-2xl font-black text-slate-900 dark:text-white block">100%</span>
+                  <span className="text-xs text-slate-500 dark:text-slate-400">Placement Support</span>
                 </div>
               </div>
 
@@ -97,15 +97,15 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
 
             {/* Right Column: Clean Registration Form Card */}
             <div className="lg:col-span-5">
-              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-slate-200/80 relative">
+              <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-8 shadow-md border border-slate-200/80 dark:border-slate-800 relative">
                 <div className="absolute -top-3 right-6 bg-emerald-600 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-0.5 rounded-full">
                   Instant Registration
                 </div>
 
-                <h3 className="text-xl font-bold text-slate-900 tracking-tight mb-1">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight mb-1">
                   Book a Free Demo Class
                 </h3>
-                <p className="text-xs text-slate-500 mb-6">
+                <p className="text-xs text-slate-500 dark:text-slate-400 mb-6">
                   Experience Prashant Sir's teaching methodology with zero obligation.
                 </p>
 
@@ -117,34 +117,34 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
                   className="space-y-4"
                 >
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                       Student Full Name
                     </label>
                     <input
                       type="text"
                       required
                       placeholder="e.g. Rahul Sharma"
-                      className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white text-slate-900"
+                      className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-xs outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white dark:focus:bg-slate-800 text-slate-900 dark:text-white"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                       Mobile Number (WhatsApp)
                     </label>
                     <input
                       type="tel"
                       required
                       placeholder="+91 98101 26691"
-                      className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white text-slate-900"
+                      className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-semibold outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white dark:focus:bg-slate-800 text-slate-900 dark:text-white"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                       Target Program
                     </label>
-                    <select className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs outline-none focus:ring-2 focus:ring-blue-600 text-slate-900">
+                    <select className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-xs outline-none focus:ring-2 focus:ring-blue-600 text-slate-900 dark:text-white">
                       <option>Spoken English & Fluency</option>
                       <option>IELTS Academic / General (Band 7.5+)</option>
                       <option>PTE Academic Masterclass</option>
@@ -163,8 +163,8 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
                     </button>
                   </MagneticButton>
 
-                  <p className="text-[11px] text-slate-500 text-center flex items-center justify-center gap-1 pt-1">
-                    <MapPin className="w-3.5 h-3.5 text-emerald-600" />
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 text-center flex items-center justify-center gap-1 pt-1">
+                    <MapPin className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                     <span>Dashrath Puri Metro Gate 1</span>
                   </p>
                 </form>
@@ -178,13 +178,13 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
       {/* MINIMAL COURSE CATEGORY HUB */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
-          <span className="text-xs font-semibold text-blue-600 uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-full">
+          <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider bg-blue-50 dark:bg-blue-950/60 px-3 py-1 rounded-full border border-blue-200/60 dark:border-blue-800">
             Curriculum Overview
           </span>
-          <h2 className="text-3xl font-black text-slate-900 tracking-tight">
+          <h2 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
             English & Test Preparation Programs
           </h2>
-          <p className="text-slate-600 text-sm">
+          <p className="text-slate-600 dark:text-slate-300 text-sm">
             Personalized 1-on-1 and micro-batch modules designed for fluency and score acceleration.
           </p>
         </div>
@@ -203,8 +203,8 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
               onClick={() => setActiveCategoryTab(tab.id)}
               className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
                 activeCategoryTab === tab.id
-                  ? 'bg-slate-900 text-white shadow-xs'
-                  : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+                  ? 'bg-slate-900 dark:bg-blue-600 text-white shadow-xs'
+                  : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800'
               }`}
             >
               {tab.label}
@@ -217,41 +217,41 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
           {filteredCourses.map((course) => (
             <div
               key={course.id}
-              className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
+              className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between gap-2">
-                  <span className="bg-slate-100 text-slate-700 text-[10px] font-semibold uppercase px-2.5 py-0.5 rounded">
+                  <span className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-[10px] font-semibold uppercase px-2.5 py-0.5 rounded">
                     {course.category.replace('_', ' ')}
                   </span>
                   {course.is_featured && (
-                    <span className="text-emerald-700 text-[10px] font-semibold">
+                    <span className="text-emerald-700 dark:text-emerald-400 text-[10px] font-semibold">
                       Popular
                     </span>
                   )}
                 </div>
 
-                <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   {course.title}
                 </h3>
 
-                <p className="text-xs text-slate-600 leading-relaxed line-clamp-2">
+                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-2">
                   {course.short_description}
                 </p>
 
                 {/* Key Features List */}
-                <ul className="space-y-1.5 text-xs text-slate-600 border-t border-slate-100 pt-3">
+                <ul className="space-y-1.5 text-xs text-slate-600 dark:text-slate-400 border-t border-slate-100 dark:border-slate-800 pt-3">
                   {course.learning_outcomes.slice(0, 3).map((outcome, idx) => (
                     <li key={idx} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                       <span>{outcome}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="pt-4 border-t border-slate-100 mt-5 flex items-center justify-between">
-                <span className="text-xs font-bold text-slate-900">{course.duration_weeks} Weeks</span>
+              <div className="pt-4 border-t border-slate-100 dark:border-slate-800 mt-5 flex items-center justify-between">
+                <span className="text-xs font-bold text-slate-900 dark:text-white">{course.duration_weeks} Weeks</span>
 
                 <MagneticButton strength={0.3} maxDistance={40}>
                   <button
@@ -421,10 +421,10 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
       {/* SCORECARDS CAROUSEL */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-8 space-y-2">
-          <span className="text-xs font-semibold text-blue-600 uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-full">
+          <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider bg-blue-50 dark:bg-blue-950/60 px-3 py-1 rounded-full border border-blue-200/60 dark:border-blue-800">
             Verified Results
           </span>
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
             Student Scorecards & Reviews
           </h2>
         </div>
@@ -433,12 +433,12 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
           {reviews.map((rev) => (
             <div
               key={rev.id}
-              className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
+              className="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
             >
               <div>
                 <div
                   onClick={() => setSelectedScorecard(rev)}
-                  className="relative h-40 rounded-xl overflow-hidden mb-3 cursor-pointer group bg-slate-100 border border-slate-200/80"
+                  className="relative h-40 rounded-xl overflow-hidden mb-3 cursor-pointer group bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700"
                 >
                   <img
                     src={rev.scorecard_image_url || 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&auto=format&fit=crop&q=80'}
@@ -450,17 +450,17 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
                   </div>
                 </div>
 
-                <p className="text-xs text-slate-600 italic leading-relaxed line-clamp-3">
+                <p className="text-xs text-slate-600 dark:text-slate-300 italic leading-relaxed line-clamp-3">
                   "{rev.review_text}"
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-slate-100 mt-3 flex items-center justify-between text-xs">
+              <div className="pt-3 border-t border-slate-100 dark:border-slate-800 mt-3 flex items-center justify-between text-xs">
                 <div>
-                  <h4 className="font-bold text-slate-900">{rev.student_name}</h4>
-                  <p className="text-[10px] text-slate-500">{rev.course_taken}</p>
+                  <h4 className="font-bold text-slate-900 dark:text-white">{rev.student_name}</h4>
+                  <p className="text-[10px] text-slate-500 dark:text-slate-400">{rev.course_taken}</p>
                 </div>
-                <span className="text-[10px] font-semibold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">
+                <span className="text-[10px] font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 px-2 py-0.5 rounded border border-blue-200/60 dark:border-blue-800">
                   {rev.source}
                 </span>
               </div>

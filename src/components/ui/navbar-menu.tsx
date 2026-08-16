@@ -26,7 +26,7 @@ export const MenuItem = ({
     <div onMouseEnter={() => setActive(item)} className="relative">
       <motion.p
         transition={{ duration: 0.2 }}
-        className="cursor-pointer text-slate-800 font-semibold text-xs hover:text-blue-600 transition-colors whitespace-nowrap"
+        className="cursor-pointer text-slate-800 dark:text-slate-200 font-semibold text-xs hover:text-blue-600 dark:hover:text-blue-400 transition-colors whitespace-nowrap"
       >
         {item}
       </motion.p>
@@ -41,7 +41,7 @@ export const MenuItem = ({
               <motion.div
                 transition={transition}
                 layoutId="active"
-                className="bg-white backdrop-blur-md rounded-2xl overflow-hidden border border-slate-200 shadow-xl"
+                className="bg-white dark:bg-slate-900 backdrop-blur-md rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-xl"
               >
                 <motion.div
                   layout
@@ -68,7 +68,7 @@ export const Menu = ({
   return (
     <nav
       onMouseLeave={() => setActive(null)}
-      className="relative rounded-full border border-slate-200/80 bg-white/95 shadow-xs flex justify-center items-center space-x-4 sm:space-x-5 px-5 py-2.5"
+      className="relative rounded-full border border-slate-200/80 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 shadow-xs flex justify-center items-center space-x-4 sm:space-x-5 px-5 py-2.5"
     >
       {children}
     </nav>
@@ -107,10 +107,10 @@ export const ProductItem = ({
         className="shrink-0 rounded-lg shadow-sm object-cover group-hover:scale-105 transition-transform duration-300 w-24 h-16"
       />
       <div>
-        <h4 className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+        <h4 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
           {title}
         </h4>
-        <p className="text-slate-500 text-xs max-w-[12rem] leading-tight mt-0.5">
+        <p className="text-slate-500 dark:text-slate-400 text-xs max-w-[12rem] leading-tight mt-0.5">
           {description}
         </p>
       </div>
@@ -128,7 +128,7 @@ export const HoveredLink = ({ children, onClick, ...rest }: any) => {
           onClick();
         }
       }}
-      className="text-slate-600 hover:text-blue-600 transition-colors font-medium text-xs block py-1"
+      className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium text-xs block py-1"
     >
       {children}
     </a>

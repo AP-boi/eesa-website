@@ -7,15 +7,15 @@ interface MobileStickyBarProps {
 
 export const MobileStickyBar: React.FC<MobileStickyBarProps> = ({ onOpenDemoModal }) => {
   return (
-    <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200/80 px-3 py-2 shadow-lg">
+    <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 px-3 py-2 shadow-lg">
       <div className="grid grid-cols-3 gap-2 items-center">
         
         {/* Direct Call Button */}
         <a
           href="tel:+919810126691"
-          className="flex flex-col items-center justify-center py-2 px-2 rounded-xl bg-slate-100 text-slate-800 text-[11px] font-bold border border-slate-200 hover:bg-slate-200 transition-colors"
+          className="flex flex-col items-center justify-center py-2 px-2 rounded-xl bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200 text-[11px] font-bold border border-slate-200 dark:border-slate-800 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
         >
-          <Phone className="w-4 h-4 text-slate-900 mb-0.5" />
+          <Phone className="w-4 h-4 text-slate-900 dark:text-white mb-0.5" />
           <span>Call Desk</span>
         </a>
 

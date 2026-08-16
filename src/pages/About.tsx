@@ -96,51 +96,51 @@ export const About: React.FC<AboutProps> = ({ onNavigate, onOpenDemoModal }) => 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           
           <div className="space-y-4">
-            <span className="text-xs font-extrabold text-blue-600 uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+            <span className="text-xs font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-wider bg-blue-50 dark:bg-blue-950/60 px-3 py-1 rounded-full border border-blue-200/60 dark:border-blue-800">
               Our Founding Vision
             </span>
-            <h2 className="text-3xl font-black text-slate-900 tracking-tight">
+            <h2 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
               Transforming Suburban Education in West Delhi
             </h2>
-            <p className="text-sm text-slate-700 leading-relaxed">
+            <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
               Before EESA Academy's launch in Vijay Enclave / Dashrath Puri, students targeting high IELTS scores or OET medical registration had to travel hours to distant commercial coaching hubs. 
             </p>
-            <p className="text-sm text-slate-700 leading-relaxed">
+            <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
               EESA Academy brought international-grade test preparation, air-conditioned computer labs, and patient 1-on-1 faculty guidance directly adjacent to <strong>Dashrath Puri Metro Station (Gate No. 1)</strong>.
             </p>
 
             <div className="pt-2 grid grid-cols-2 gap-4">
-              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                <h4 className="text-2xl font-black text-blue-600">5,000+</h4>
-                <p className="text-xs font-bold text-slate-700 mt-0.5">Students Mentored</p>
+              <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+                <h4 className="text-2xl font-black text-blue-600 dark:text-blue-400">5,000+</h4>
+                <p className="text-xs font-bold text-slate-700 dark:text-slate-300 mt-0.5">Students Mentored</p>
               </div>
-              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                <h4 className="text-2xl font-black text-emerald-600">4.9 / 5</h4>
-                <p className="text-xs font-bold text-slate-700 mt-0.5">Justdial Verified Score</p>
+              <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+                <h4 className="text-2xl font-black text-emerald-600 dark:text-emerald-400">4.9 / 5</h4>
+                <p className="text-xs font-bold text-slate-700 dark:text-slate-300 mt-0.5">Justdial Verified Score</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-xl space-y-6">
+          <div className="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-200">
+              <div className="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 border border-blue-200 dark:border-blue-800">
                 <Eye className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="text-lg font-bold text-slate-900">Our Core Vision</h4>
-                <p className="text-xs text-slate-700 mt-1 leading-relaxed">
+                <h4 className="text-lg font-bold text-slate-900 dark:text-white">Our Core Vision</h4>
+                <p className="text-xs text-slate-700 dark:text-slate-300 mt-1 leading-relaxed">
                   To be India's most student-centric English language institute, providing accessible, transparent, and result-oriented coaching without hidden fees.
                 </p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4 pt-4 border-t border-slate-200">
-              <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-200">
+            <div className="flex items-start gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
+              <div className="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-200 dark:border-emerald-800">
                 <HeartHandshake className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="text-lg font-bold text-slate-900">Non-Judgmental Learning Environment</h4>
-                <p className="text-xs text-slate-700 mt-1 leading-relaxed">
+                <h4 className="text-lg font-bold text-slate-900 dark:text-white">Non-Judgmental Learning Environment</h4>
+                <p className="text-xs text-slate-700 dark:text-slate-300 mt-1 leading-relaxed">
                   We believe every student can achieve natural English fluency when provided a supportive, non-judgmental space free of fear or public embarrassment.
                 </p>
               </div>
@@ -202,13 +202,13 @@ export const About: React.FC<AboutProps> = ({ onNavigate, onOpenDemoModal }) => 
       {/* CAMPUS INFRASTRUCTURE GALLERY */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-8">
-          <span className="text-xs font-extrabold text-blue-600 uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+          <span className="text-xs font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-wider bg-blue-50 dark:bg-blue-950/60 px-3 py-1 rounded-full border border-blue-200/60 dark:border-blue-800">
             State-of-the-Art Infrastructure
           </span>
-          <h2 className="text-3xl font-black text-slate-900 tracking-tight mt-3">
+          <h2 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight mt-3">
             Campus Photo Tour & Facilities
           </h2>
-          <p className="text-xs sm:text-sm text-slate-700 mt-2">
+          <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 mt-2">
             Air-conditioned learning zones, PTE software labs, and quiet study lounges.
           </p>
         </div>
@@ -226,8 +226,8 @@ export const About: React.FC<AboutProps> = ({ onNavigate, onOpenDemoModal }) => 
               onClick={() => setGalleryFilter(tab.id as 'all' | 'classrooms' | 'batches' | 'activities')}
               className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all ${
                 galleryFilter === tab.id
-                  ? 'bg-slate-900 text-white border-slate-900 shadow-md'
-                  : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
+                  ? 'bg-slate-900 dark:bg-blue-600 text-white border-slate-900 dark:border-blue-600 shadow-md'
+                  : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800'
               }`}
             >
               {tab.label}
@@ -238,8 +238,8 @@ export const About: React.FC<AboutProps> = ({ onNavigate, onOpenDemoModal }) => 
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredGallery.map((item, idx) => (
-            <div key={idx} className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-xs group">
-              <div className="relative h-48 overflow-hidden bg-slate-100">
+            <div key={idx} className="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-xs group">
+              <div className="relative h-48 overflow-hidden bg-slate-100 dark:bg-slate-800">
                 <img
                   src={item.url}
                   alt={item.title}
@@ -247,8 +247,8 @@ export const About: React.FC<AboutProps> = ({ onNavigate, onOpenDemoModal }) => 
                 />
               </div>
               <div className="p-4 space-y-1">
-                <h4 className="font-bold text-slate-900 text-sm">{item.title}</h4>
-                <p className="text-[11px] text-slate-500">{item.subtitle}</p>
+                <h4 className="font-bold text-slate-900 dark:text-white text-sm">{item.title}</h4>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400">{item.subtitle}</p>
               </div>
             </div>
           ))}
@@ -257,35 +257,35 @@ export const About: React.FC<AboutProps> = ({ onNavigate, onOpenDemoModal }) => 
 
       {/* CORPORATE & ACADEMIC CREDENTIALS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-slate-50 rounded-3xl p-8 border border-slate-200">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-3xl p-8 border border-slate-200 dark:border-slate-800">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full border border-emerald-300">
-                <ShieldCheck className="w-4 h-4 text-emerald-600" /> Government Registered Entity
+              <div className="inline-flex items-center gap-2 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 text-xs font-bold px-3 py-1 rounded-full border border-emerald-300 dark:border-emerald-800">
+                <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> Government Registered Entity
               </div>
 
-              <h3 className="text-2xl font-black text-slate-900 tracking-tight">
+              <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">
                 Corporate Governance & Zero Hidden Fee Policy
               </h3>
 
-              <ul className="space-y-3 text-xs sm:text-sm text-slate-700">
+              <ul className="space-y-3 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
                 <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                   <span>
                     <strong>Official Corporate Registration:</strong> Registered under MCA as Expert Educational Services Academy Private Limited (Est. 2022).
                   </span>
                 </li>
 
                 <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                   <span>
                     <strong>Transparent Fee Guarantee:</strong> All study kits, mock tests, and 1-on-1 interview evaluations are included with zero surprise extra charges.
                   </span>
                 </li>
 
                 <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                   <span>
                     <strong>Student Safety & CCTV Surveillance:</strong> 24/7 CCTV monitored campus with dedicated female staff support and clean drinking water facilities.
                   </span>
@@ -293,15 +293,15 @@ export const About: React.FC<AboutProps> = ({ onNavigate, onOpenDemoModal }) => 
               </ul>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-md text-center space-y-4">
-              <Building2 className="w-12 h-12 text-blue-600 mx-auto" />
-              <h4 className="text-lg font-bold text-slate-900">Visit Our Registered Campus</h4>
-              <p className="text-xs text-slate-700">
+            <div className="bg-white dark:bg-slate-950 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md text-center space-y-4">
+              <Building2 className="w-12 h-12 text-blue-600 dark:text-blue-400 mx-auto" />
+              <h4 className="text-lg font-bold text-slate-900 dark:text-white">Visit Our Registered Campus</h4>
+              <p className="text-xs text-slate-700 dark:text-slate-300">
                 RZ-A-1/14B, First Floor, Vijay Enclave, Opp. Shani Dev Mandir, Dabri-Palam Road, New Delhi - 110045.
               </p>
               <button
                 onClick={onOpenDemoModal}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl shadow-md text-xs"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl shadow-md text-xs cursor-pointer"
               >
                 Schedule Campus Walkthrough
               </button>

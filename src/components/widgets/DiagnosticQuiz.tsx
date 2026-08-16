@@ -129,22 +129,22 @@ export const DiagnosticQuiz: React.FC<DiagnosticQuizProps> = ({ courses, onSelec
   };
 
   return (
-    <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl relative">
-      <div className="flex items-center justify-between border-b border-slate-200 pb-4 mb-6">
+    <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-xl relative">
+      <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4 mb-6">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 font-bold">
+          <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold">
             <HelpCircle className="w-5 h-5" />
           </div>
           <div>
-            <span className="text-xs font-bold text-blue-600 uppercase tracking-wider block">
+            <span className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider block">
               Instant Diagnostic Tool
             </span>
-            <h4 className="text-xl font-bold text-slate-900">5-Minute English & Level Diagnostic Quiz</h4>
+            <h4 className="text-xl font-bold text-slate-900 dark:text-white">5-Minute English & Level Diagnostic Quiz</h4>
           </div>
         </div>
 
         {!isCompleted && (
-          <div className="text-xs font-bold text-slate-500 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">
+          <div className="text-xs font-bold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700">
             Question {currentStep + 1} of {QUIZ_QUESTIONS.length}
           </div>
         )}
@@ -153,14 +153,14 @@ export const DiagnosticQuiz: React.FC<DiagnosticQuizProps> = ({ courses, onSelec
       {!isCompleted ? (
         <div className="space-y-6">
           {/* Progress Bar */}
-          <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+          <div className="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
             <div
               className="bg-blue-600 h-full transition-all duration-300"
               style={{ width: `${((currentStep + 1) / QUIZ_QUESTIONS.length) * 100}%` }}
             ></div>
           </div>
 
-          <h5 className="text-lg font-bold text-slate-900 leading-snug">
+          <h5 className="text-lg font-bold text-slate-900 dark:text-white leading-snug">
             {QUIZ_QUESTIONS[currentStep].question}
           </h5>
 
@@ -169,34 +169,34 @@ export const DiagnosticQuiz: React.FC<DiagnosticQuizProps> = ({ courses, onSelec
               <button
                 key={idx}
                 onClick={() => handleSelectOption(opt.points)}
-                className="w-full text-left p-4 rounded-xl border border-slate-200 hover:border-blue-500 hover:bg-blue-50/50 transition-all font-medium text-slate-800 text-sm flex items-center justify-between group"
+                className="w-full text-left p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/60 hover:border-blue-500 dark:hover:border-blue-400 hover:bg-blue-50/50 dark:hover:bg-slate-800 transition-all font-medium text-slate-800 dark:text-slate-200 text-sm flex items-center justify-between group cursor-pointer"
               >
                 <span>{opt.text}</span>
-                <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all" />
               </button>
             ))}
           </div>
         </div>
       ) : (
         <div className="space-y-6">
-          <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center space-y-3">
-            <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
+          <div className="bg-slate-50 dark:bg-slate-800/60 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 text-center space-y-3">
+            <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 rounded-full flex items-center justify-center mx-auto">
               <Award className="w-7 h-7" />
             </div>
-            <h5 className="text-2xl font-black text-slate-900">Diagnostic Assessment Complete!</h5>
+            <h5 className="text-2xl font-black text-slate-900 dark:text-white">Diagnostic Assessment Complete!</h5>
             
-            <div className="inline-block px-4 py-1.5 rounded-full border text-xs font-bold uppercase tracking-wider ${badgeColor}">
+            <div className={`inline-block px-4 py-1.5 rounded-full border text-xs font-bold uppercase tracking-wider ${badgeColor}`}>
               Calculated Skill Profile: {level} (Score: {totalPoints}/15)
             </div>
 
-            <p className="text-xs text-slate-600 max-w-md mx-auto">
+            <p className="text-xs text-slate-600 dark:text-slate-300 max-w-md mx-auto">
               Based on your response syntax and target goals, Prashant Sir recommends enrolling in:
             </p>
 
-            <div className="bg-white p-4 rounded-xl border border-slate-200 text-left max-w-md mx-auto shadow-xs">
-              <h6 className="font-bold text-slate-900 text-base">{recommendedCourse.title}</h6>
-              <p className="text-xs text-slate-500 mt-0.5">{recommendedCourse.short_description}</p>
-              <div className="mt-2 flex items-center justify-between text-xs text-blue-600 font-bold">
+            <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 text-left max-w-md mx-auto shadow-xs">
+              <h6 className="font-bold text-slate-900 dark:text-white text-base">{recommendedCourse.title}</h6>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{recommendedCourse.short_description}</p>
+              <div className="mt-2 flex items-center justify-between text-xs text-blue-600 dark:text-blue-400 font-bold">
                 <span>Duration: {recommendedCourse.duration_weeks} Weeks</span>
                 <span>Small Batch (Max 8)</span>
               </div>
@@ -205,9 +205,9 @@ export const DiagnosticQuiz: React.FC<DiagnosticQuizProps> = ({ courses, onSelec
 
           {/* Form to capture result */}
           {!submittedSuccess ? (
-            <form onSubmit={handleSaveResult} className="bg-blue-50/70 p-5 rounded-2xl border border-blue-200 space-y-3">
-              <h6 className="text-xs font-bold text-blue-900 uppercase tracking-wider flex items-center gap-1.5">
-                <Sparkles className="w-4 h-4 text-blue-600" /> Save Diagnostic Result & Get Free Consultation
+            <form onSubmit={handleSaveResult} className="bg-blue-50/70 dark:bg-blue-950/40 p-5 rounded-2xl border border-blue-200 dark:border-blue-800 space-y-3">
+              <h6 className="text-xs font-bold text-blue-900 dark:text-blue-300 uppercase tracking-wider flex items-center gap-1.5">
+                <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400" /> Save Diagnostic Result & Get Free Consultation
               </h6>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -217,7 +217,7 @@ export const DiagnosticQuiz: React.FC<DiagnosticQuizProps> = ({ courses, onSelec
                   value={leadName}
                   onChange={(e) => setLeadName(e.target.value)}
                   placeholder="Your Full Name"
-                  className="px-3.5 py-2 bg-white border border-slate-300 rounded-lg text-sm outline-none focus:ring-2 focus:ring-blue-600"
+                  className="px-3.5 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-sm text-slate-900 dark:text-white outline-none focus:ring-2 focus:ring-blue-600"
                 />
                 <input
                   type="tel"
@@ -225,7 +225,7 @@ export const DiagnosticQuiz: React.FC<DiagnosticQuizProps> = ({ courses, onSelec
                   value={leadPhone}
                   onChange={(e) => setLeadPhone(e.target.value)}
                   placeholder="WhatsApp Mobile Number"
-                  className="px-3.5 py-2 bg-white border border-slate-300 rounded-lg text-sm outline-none focus:ring-2 focus:ring-blue-600 font-semibold"
+                  className="px-3.5 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-sm text-slate-900 dark:text-white outline-none focus:ring-2 focus:ring-blue-600 font-semibold"
                 />
               </div>
 
@@ -233,28 +233,28 @@ export const DiagnosticQuiz: React.FC<DiagnosticQuizProps> = ({ courses, onSelec
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded-lg text-xs shadow-md transition-all flex items-center justify-center gap-2"
+                  className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded-lg text-xs shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
                   {isSubmitting ? 'Saving...' : 'Get Personalized Faculty Report'}
                 </button>
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="px-3 py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg text-xs font-bold transition-all flex items-center gap-1"
+                  className="px-3 py-2.5 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-bold transition-all flex items-center gap-1 cursor-pointer"
                 >
                   <RotateCcw className="w-3.5 h-3.5" /> Retake
                 </button>
               </div>
             </form>
           ) : (
-            <div className="bg-emerald-50 border border-emerald-200 p-4 rounded-xl text-center space-y-2">
-              <CheckCircle2 className="w-6 h-6 text-emerald-600 mx-auto" />
-              <p className="text-xs font-bold text-emerald-900">
+            <div className="bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 p-4 rounded-xl text-center space-y-2">
+              <CheckCircle2 className="w-6 h-6 text-emerald-600 dark:text-emerald-400 mx-auto" />
+              <p className="text-xs font-bold text-emerald-900 dark:text-emerald-300">
                 Diagnostic Report Saved! Our lead mentor will share detailed feedback on {leadPhone}.
               </p>
               <button
                 onClick={() => onSelectCourse(recommendedCourse.id)}
-                className="bg-emerald-600 text-white font-bold text-xs px-4 py-2 rounded-lg shadow-sm hover:bg-emerald-700"
+                className="bg-emerald-600 text-white font-bold text-xs px-4 py-2 rounded-lg shadow-sm hover:bg-emerald-700 cursor-pointer"
               >
                 View Recommended Course Details
               </button>

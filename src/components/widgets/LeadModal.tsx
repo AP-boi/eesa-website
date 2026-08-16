@@ -64,7 +64,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
       <div
-        className="relative w-full max-w-xl bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden my-8"
+        className="relative w-full max-w-xl bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden my-8"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -94,22 +94,22 @@ export const LeadModal: React.FC<LeadModalProps> = ({
         <div className="p-6 max-h-[80vh] overflow-y-auto">
           {isSubmitted ? (
             <div className="text-center py-8 space-y-4">
-              <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto animate-bounce">
+              <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 rounded-full flex items-center justify-center mx-auto animate-bounce">
                 <CheckCircle2 className="w-10 h-10" />
               </div>
-              <h4 className="text-2xl font-bold text-slate-900">Seat Reserved Successfully!</h4>
-              <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-                Thank you, <strong className="text-slate-900">{fullName}</strong>. Senior Faculty member Prashant Sir / Admissions Office will contact you on <strong className="text-blue-600">{phone}</strong> within 30 minutes to confirm your preferred time slot.
+              <h4 className="text-2xl font-bold text-slate-900 dark:text-white">Seat Reserved Successfully!</h4>
+              <p className="text-sm text-slate-600 dark:text-slate-300 max-w-md mx-auto leading-relaxed">
+                Thank you, <strong className="text-slate-900 dark:text-white">{fullName}</strong>. Senior Faculty member Prashant Sir / Admissions Office will contact you on <strong className="text-blue-600 dark:text-blue-400">{phone}</strong> within 30 minutes to confirm your preferred time slot.
               </p>
-              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs text-slate-700 space-y-1.5 text-left max-w-sm mx-auto">
-                <p className="font-bold text-slate-900">📍 Direct Walk-in Campus Location:</p>
+              <div className="bg-slate-50 dark:bg-slate-800/60 p-4 rounded-xl border border-slate-200 dark:border-slate-700 text-xs text-slate-700 dark:text-slate-300 space-y-1.5 text-left max-w-sm mx-auto">
+                <p className="font-bold text-slate-900 dark:text-white">📍 Direct Walk-in Campus Location:</p>
                 <p>RZ-A-1/14B, First Floor, Vijay Enclave, Opp. Shani Dev Mandir, Dabri-Palam Road, New Delhi - 110045.</p>
-                <p className="text-emerald-700 font-semibold mt-1">📞 Immediate Helpline: +91 98101 26691</p>
+                <p className="text-emerald-700 dark:text-emerald-400 font-semibold mt-1">📞 Immediate Helpline: +91 98101 26691</p>
               </div>
               <div className="pt-4">
                 <button
                   onClick={onClose}
-                  className="bg-blue-600 text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-md hover:bg-blue-700 transition-all"
+                  className="bg-blue-600 text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-md hover:bg-blue-700 transition-all cursor-pointer"
                 >
                   Done & Return
                 </button>
@@ -119,7 +119,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Full Name */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                   Full Name <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -130,7 +130,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     placeholder="e.g. Anjali Sharma"
-                    className="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none"
+                    className="w-full pl-9 pr-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-blue-600 text-slate-900 dark:text-white outline-none"
                   />
                 </div>
               </div>
@@ -138,7 +138,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
               {/* Phone & Email */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                     Mobile Number (WhatsApp) <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -149,13 +149,13 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="+91 98101 26691"
-                      className="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none font-semibold text-slate-900"
+                      className="w-full pl-9 pr-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-blue-600 outline-none font-semibold text-slate-900 dark:text-white"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                     Email Address (Optional)
                   </label>
                   <div className="relative">
@@ -165,7 +165,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="name@gmail.com"
-                      className="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none"
+                      className="w-full pl-9 pr-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-blue-600 text-slate-900 dark:text-white outline-none"
                     />
                   </div>
                 </div>
@@ -173,13 +173,13 @@ export const LeadModal: React.FC<LeadModalProps> = ({
 
               {/* Target Course Select */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                   Target Program / Course
                 </label>
                 <select
                   value={selectedCourseId}
                   onChange={(e) => setSelectedCourseId(e.target.value)}
-                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none font-medium text-slate-800"
+                  className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-blue-600 outline-none font-medium text-slate-800 dark:text-slate-200"
                 >
                   <option value="">Select Course (Or talk to Counselor)</option>
                   {courses.map((c) => (
@@ -193,13 +193,13 @@ export const LeadModal: React.FC<LeadModalProps> = ({
               {/* Preferred Mode & Time Slot */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                     Learning Mode
                   </label>
                   <select
                     value={preferredMode}
                     onChange={(e) => setPreferredMode(e.target.value as DeliveryMode)}
-                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-blue-600 outline-none"
+                    className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-blue-600 text-slate-800 dark:text-slate-200 outline-none"
                   >
                     <option value="offline">Offline AC Classroom (Dashrath Puri)</option>
                     <option value="online_live">Live Interactive Online</option>
@@ -209,13 +209,13 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                     Preferred Batch Time
                   </label>
                   <select
                     value={preferredTimeSlot}
                     onChange={(e) => setPreferredTimeSlot(e.target.value)}
-                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-blue-600 outline-none"
+                    className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-blue-600 text-slate-800 dark:text-slate-200 outline-none"
                   >
                     <option value="Morning (7-10 AM)">Early Morning (7:00 - 10:00 AM)</option>
                     <option value="Midday (10 AM-1 PM)">Midday Batch (10:00 AM - 1:00 PM)</option>
@@ -228,7 +228,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
 
               {/* Notes / Special Request */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                   Target Exam / Target Score / Notes
                 </label>
                 <textarea
@@ -236,13 +236,13 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   placeholder="e.g., Aiming for IELTS 7.5 for Canada PR or OET Grade B Nurse shift timing..."
-                  className="w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-blue-600 outline-none resize-none"
+                  className="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-blue-600 text-slate-900 dark:text-white outline-none resize-none"
                 />
               </div>
 
               {/* Trust Callout */}
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 text-xs text-blue-900 flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
+              <div className="bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 rounded-lg p-3 text-xs text-blue-900 dark:text-blue-300 flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
                 <span>
                   <strong>Zero Obligation:</strong> Free demo class includes a full 45-minute interactive diagnostic assessment with Prashant Sir.
                 </span>
