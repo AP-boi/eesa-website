@@ -101,16 +101,20 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Brand Logo */}
           <div
             onClick={() => onNavigate('home')}
-            className="flex items-center gap-2.5 cursor-pointer group shrink-0"
+            className="flex items-center gap-3 cursor-pointer group shrink-0"
           >
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-900 flex items-center justify-center text-white shadow-xs group-hover:scale-105 transition-transform duration-300">
-              <GraduationCap className="w-5 h-5 text-blue-400" />
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white p-0.5 border border-slate-200/80 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+              <img
+                src="/images/eesa/eesa-logo.jpg"
+                alt="EESA Academy Logo"
+                className="w-full h-full object-contain rounded-lg"
+              />
             </div>
             <div>
               <span className="text-base sm:text-lg font-black text-slate-900 tracking-tight font-sans block leading-none">
                 EESA ACADEMY
               </span>
-              <span className="text-[10px] text-slate-500 font-medium tracking-wide hidden sm:block">
+              <span className="text-[10px] text-slate-500 font-medium tracking-wide hidden sm:block mt-0.5">
                 Expert Educational Services Academy
               </span>
             </div>

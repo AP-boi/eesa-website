@@ -276,6 +276,91 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
         />
       </section>
 
+      {/* REAL CAMPUS SESSIONS & CLASSROOM TOUR */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-slate-900 rounded-3xl p-8 sm:p-12 text-white border border-slate-800 shadow-2xl relative overflow-hidden">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+            <div>
+              <span className="text-xs font-extrabold text-blue-400 uppercase tracking-wider bg-blue-950 px-3.5 py-1 rounded-full border border-blue-800">
+                Inside EESA Academy
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight mt-3">
+                Real Classroom Sessions & Campus Life
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-xl">
+                Experience the energetic, collaborative, and interactive learning atmosphere at Dashrath Puri Campus.
+              </p>
+            </div>
+
+            <button
+              onClick={() => onNavigate('about')}
+              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition-all shrink-0"
+            >
+              <span>View Full Campus Tour</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="bg-slate-800/80 rounded-2xl overflow-hidden border border-slate-700 group hover:border-blue-500 transition-all">
+              <div className="h-44 overflow-hidden bg-slate-950">
+                <img
+                  src="/images/eesa/eesa-classroom-1.jpeg"
+                  alt="EESA AC Classroom Lecture"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-3.5">
+                <h4 className="text-xs font-bold text-white">Micro-Batch Lecture Room</h4>
+                <p className="text-[10px] text-slate-400 mt-0.5">Air-conditioned, modern seating for max 8 students</p>
+              </div>
+            </div>
+
+            <div className="bg-slate-800/80 rounded-2xl overflow-hidden border border-slate-700 group hover:border-blue-500 transition-all">
+              <div className="h-44 overflow-hidden bg-slate-950">
+                <img
+                  src="/images/eesa/eesa-ielts-session-1.jpeg"
+                  alt="Speaking Practice Session"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-3.5">
+                <h4 className="text-xs font-bold text-white">1-on-1 Speaking Panel</h4>
+                <p className="text-[10px] text-slate-400 mt-0.5">Daily individual feedback & accent calibration</p>
+              </div>
+            </div>
+
+            <div className="bg-slate-800/80 rounded-2xl overflow-hidden border border-slate-700 group hover:border-blue-500 transition-all">
+              <div className="h-44 overflow-hidden bg-slate-950">
+                <img
+                  src="/images/eesa/eesa-student-activity-1.jpeg"
+                  alt="Group Discussion Forum"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-3.5">
+                <h4 className="text-xs font-bold text-white">Group Roleplay & Debate</h4>
+                <p className="text-[10px] text-slate-400 mt-0.5">Confidence building & public speaking exercises</p>
+              </div>
+            </div>
+
+            <div className="bg-slate-800/80 rounded-2xl overflow-hidden border border-slate-700 group hover:border-blue-500 transition-all">
+              <div className="h-44 overflow-hidden bg-slate-950">
+                <img
+                  src="/images/eesa/eesa-batch-1.jpeg"
+                  alt="Student Batch Achievement"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-3.5">
+                <h4 className="text-xs font-bold text-white">Batch Felicitations</h4>
+                <p className="text-[10px] text-slate-400 mt-0.5">Celebrating IELTS Band 8.0 & OET Grade B success</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* THE EESA ADVANTAGE */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-slate-900 rounded-2xl p-8 sm:p-10 text-white border border-slate-800 shadow-lg">

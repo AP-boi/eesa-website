@@ -15,8 +15,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenDemoModal }) =
           {/* Col 1: Brand & Institutional Footprint */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-md">
-                <GraduationCap className="w-6 h-6" />
+              <div className="w-12 h-12 rounded-xl bg-white p-1 flex items-center justify-center shadow-md overflow-hidden border border-slate-700">
+                <img
+                  src="/images/eesa/eesa-logo.jpg"
+                  alt="EESA Academy Logo"
+                  className="w-full h-full object-contain rounded-lg"
+                />
               </div>
               <div>
                 <h3 className="text-lg font-black text-white tracking-tight">EESA ACADEMY</h3>

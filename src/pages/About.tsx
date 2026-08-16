@@ -10,32 +10,56 @@ interface AboutProps {
 }
 
 export const About: React.FC<AboutProps> = ({ onNavigate, onOpenDemoModal }) => {
-  const [galleryFilter, setGalleryFilter] = useState<'all' | 'classrooms' | 'labs' | 'lounge'>('all');
+  const [galleryFilter, setGalleryFilter] = useState<'all' | 'classrooms' | 'batches' | 'activities'>('all');
 
   const galleryImages = [
     {
       category: 'classrooms',
-      title: 'Air-Conditioned Micro-Batch Classroom',
-      subtitle: 'Max 8 students per batch for direct 1-on-1 interaction',
-      url: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&auto=format&fit=crop&q=80',
-    },
-    {
-      category: 'labs',
-      title: 'Dedicated PTE & Duolingo Computer Lab',
-      subtitle: 'Official exam-pattern software with real-time AI score feedback',
-      url: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&auto=format&fit=crop&q=80',
-    },
-    {
-      category: 'lounge',
-      title: 'Silent Study & Speaking Practice Lounge',
-      subtitle: 'Open for students from 7:00 AM to 8:00 PM daily',
-      url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&auto=format&fit=crop&q=80',
+      title: 'EESA Micro-Batch Lecture & Discussion Hall',
+      subtitle: 'Dedicated air-conditioned space for focused learning & 1-on-1 interaction',
+      url: '/images/eesa/eesa-classroom-1.jpeg',
     },
     {
       category: 'classrooms',
-      title: 'Interactive Group Roleplay Zone',
-      subtitle: 'Confidence building & accent neutralization practice',
-      url: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop&q=80',
+      title: 'Senior Faculty Whiteboard Training Session',
+      subtitle: 'Structured grammar deconstruction & speaking drills with mentor Prashant Sir',
+      url: '/images/eesa/eesa-classroom-training-1.jpeg',
+    },
+    {
+      category: 'activities',
+      title: 'IELTS & Spoken English Speaking Session',
+      subtitle: 'Daily cue-card practice and accent neutralization drills with real-time feedback',
+      url: '/images/eesa/eesa-ielts-session-1.jpeg',
+    },
+    {
+      category: 'activities',
+      title: 'Interactive Group Roleplay & Debate Forum',
+      subtitle: 'Students engaging in active communication scenarios to overcome hesitation',
+      url: '/images/eesa/eesa-student-activity-1.jpeg',
+    },
+    {
+      category: 'batches',
+      title: 'Student Batch Completion & Achievement Celebration',
+      subtitle: 'Celebrating high band achievements and corporate job interview placements',
+      url: '/images/eesa/eesa-batch-1.jpeg',
+    },
+    {
+      category: 'batches',
+      title: 'Official Merit Certificate & Award Presentation',
+      subtitle: 'Recognizing outstanding scorecards in IELTS, PTE, and Spoken English',
+      url: '/images/eesa/eesa-award-cert.jpeg',
+    },
+    {
+      category: 'classrooms',
+      title: 'Interactive Lecture & Concept Clarification',
+      subtitle: 'Comprehensive batch coaching at Dashrath Puri Campus',
+      url: '/images/eesa/eesa-classroom-2.jpeg',
+    },
+    {
+      category: 'activities',
+      title: 'Peer Discussion & Accent Tuning Workshop',
+      subtitle: 'Collaborative student speaking panels for fluency building',
+      url: '/images/eesa/eesa-student-activity-2.jpeg',
     },
   ];
 
@@ -190,16 +214,16 @@ export const About: React.FC<AboutProps> = ({ onNavigate, onOpenDemoModal }) => 
         </div>
 
         {/* Gallery Filter Buttons */}
-        <div className="flex justify-center gap-2 mb-8">
+        <div className="flex flex-wrap justify-center gap-2 mb-8">
           {[
-            { id: 'all', label: 'All Campus Facilities' },
-            { id: 'classrooms', label: 'AC Classrooms' },
-            { id: 'labs', label: 'Computer Exam Labs' },
-            { id: 'lounge', label: 'Study Lounge' },
+            { id: 'all', label: 'All Photos' },
+            { id: 'classrooms', label: 'AC Classrooms & Lecture Hall' },
+            { id: 'activities', label: 'Speaking Sessions & Roleplay' },
+            { id: 'batches', label: 'Batches & Felicitations' },
           ].map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setGalleryFilter(tab.id as 'all' | 'classrooms' | 'labs' | 'lounge')}
+              onClick={() => setGalleryFilter(tab.id as 'all' | 'classrooms' | 'batches' | 'activities')}
               className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all ${
                 galleryFilter === tab.id
                   ? 'bg-slate-900 text-white border-slate-900 shadow-md'

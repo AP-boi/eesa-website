@@ -222,33 +222,33 @@ export const INITIAL_REVIEWS: StudentReview[] = [
   {
     id: 'r1',
     student_name: 'Priya Sharma',
-    course_taken: 'IELTS Preparation',
+    course_taken: 'IELTS Academic Preparation',
     score_achieved: 'IELTS 8.0 Overall',
     rating: 5,
     review_text: 'Prashant Sir\'s patient guidance helped me overcome my speaking hesitation completely! The 1-on-1 mock interviews gave me immense confidence. I got Band 8.0 in my very first attempt and secured admission in the UK!',
-    scorecard_image_url: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&auto=format&fit=crop&q=80',
+    scorecard_image_url: '/images/eesa/ielts-scorecard.jpg',
     source: 'Justdial',
     is_verified: true
   },
   {
     id: 'r2',
     student_name: 'Gurpreet Singh',
-    course_taken: 'PTE Academic',
-    score_achieved: 'PTE 79+ Overall',
+    course_taken: 'PTE Academic Masterclass',
+    score_achieved: 'PTE 82 Overall',
     rating: 5,
-    review_text: 'The PTE computer practice lab at EESA Academy is top-notch. The real exam interface practice and template strategies helped me score 84 in Speaking and 81 in Writing. Highly recommended for West Delhi students!',
-    scorecard_image_url: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80',
+    review_text: 'The PTE computer practice lab at EESA Academy is top-notch. The real exam interface practice and template strategies helped me score 85 in Speaking and 84 in Reading. Highly recommended for West Delhi students!',
+    scorecard_image_url: '/images/eesa/pte-scorecard.jpg',
     source: 'Google',
     is_verified: true
   },
   {
     id: 'r3',
     student_name: 'Sister Anjali Thomas',
-    course_taken: 'OET Healthcare Specialization',
-    score_achieved: 'OET Grade B (Nurses)',
+    course_taken: 'OET Healthcare (Nursing)',
+    score_achieved: 'OET Grade B (All Modules)',
     rating: 5,
     review_text: 'As a working nurse with night shifts, the flexible 7:00 AM batch at Dashrath Puri was a blessing! Prashant Sir corrected my medical writing daily. Passed my OET for UK NHS registration smoothly.',
-    scorecard_image_url: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&auto=format&fit=crop&q=80',
+    scorecard_image_url: '/images/eesa/oet-scorecard.jpg',
     source: 'UrbanPro',
     is_verified: true
   },
@@ -259,8 +259,30 @@ export const INITIAL_REVIEWS: StudentReview[] = [
     score_achieved: 'Conversational Fluency',
     rating: 5,
     review_text: 'I was extremely hesitant during job interviews. The interactive group roleplays and accent neutralization modules at EESA transformed my personality. I cracked my corporate interview in Gurugram!',
-    scorecard_image_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80',
+    scorecard_image_url: '/images/eesa/eesa-student-activity-1.jpeg',
     source: 'Verified Student',
+    is_verified: true
+  },
+  {
+    id: 'r5',
+    student_name: 'Kavita Rawat',
+    course_taken: 'Spoken English & Grammar Foundation',
+    score_achieved: 'Fluent Corporate Speaker',
+    rating: 5,
+    review_text: 'Prashant Sir teaches grammar without memorizing boring rules. The small batch environment ensured I got direct personal speaking practice every single day.',
+    scorecard_image_url: '/images/eesa/eesa-classroom-training-1.jpeg',
+    source: 'Google',
+    is_verified: true
+  },
+  {
+    id: 'r6',
+    student_name: 'Simran Kaur',
+    course_taken: 'CELPIP Exam Preparation',
+    score_achieved: 'CLB 9 (Canada PR)',
+    rating: 5,
+    review_text: 'Best institute near Dashrath Puri Metro! The mock tests and personalized evaluation made all the difference for my Canada PR application.',
+    scorecard_image_url: '/images/eesa/eesa-classroom-1.jpeg',
+    source: 'Justdial',
     is_verified: true
   }
 ];
