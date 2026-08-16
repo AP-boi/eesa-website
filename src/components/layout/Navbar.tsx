@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, MapPin, Clock, MessageSquare, Menu as MobileMenuIcon, X, GraduationCap, Sparkles, LogIn, UserPlus, UserCheck } from 'lucide-react';
+import { MessageSquare, Menu as MobileMenuIcon, X, Sparkles, LogIn, UserPlus, UserCheck } from 'lucide-react';
 import { HoveredLink, Menu, MenuItem, ProductItem } from '@/components/ui/navbar-menu';
 import { MagneticButton } from '@/components/ui/magnetic-button';
 
@@ -34,66 +34,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-all">
-      {/* Top Announcement Bar */}
-      <div className="bg-slate-900 text-slate-300 text-[11px] py-1.5 px-4 font-medium">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 sm:gap-4">
-          <div className="flex items-center gap-2 text-center sm:text-left">
-            <span className="bg-emerald-600/90 text-white px-2 py-0.2 rounded text-[10px] font-bold uppercase tracking-wider">
-              Metro Access
-            </span>
-            <span className="text-slate-200">
-              Dashrath Puri Metro Station (Gate 1), West Delhi
-            </span>
-          </div>
-
-          <div className="flex items-center gap-4 text-slate-300 text-[11px]">
-            <span className="hidden md:inline-block">Mon-Sat: 7 AM - 8 PM</span>
-            
-            <a
-              href="tel:+919810126691"
-              className="flex items-center gap-1.5 text-emerald-400 font-bold hover:text-emerald-300 transition-colors"
-            >
-              <Phone className="w-3 h-3" />
-              <span>+91 98101 26691</span>
-            </a>
-
-            {/* Top Bar Auth Status */}
-            <div className="flex items-center gap-3 border-l border-slate-700 pl-3">
-              {user ? (
-                <div className="flex items-center gap-2 text-emerald-400 font-semibold">
-                  <UserCheck className="w-3.5 h-3.5" />
-                  <span>Hi, {user.fullName || user.email.split('@')[0]}</span>
-                  <button
-                    onClick={onLogout}
-                    className="text-slate-400 hover:text-red-400 text-[10px] underline ml-1"
-                  >
-                    Logout
-                  </button>
-                </div>
-              ) : (
-                <>
-                  <button
-                    onClick={() => onOpenAuthModal('login')}
-                    className="text-slate-300 hover:text-white flex items-center gap-1 font-semibold transition-colors"
-                  >
-                    <LogIn className="w-3 h-3" />
-                    <span>Log In</span>
-                  </button>
-
-                  <button
-                    onClick={() => onOpenAuthModal('signup')}
-                    className="text-blue-400 hover:text-blue-300 flex items-center gap-1 font-bold transition-colors"
-                  >
-                    <UserPlus className="w-3 h-3" />
-                    <span>Sign Up</span>
-                  </button>
-                </>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Main Navbar Header: Spacious & Perfectly Balanced */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20 gap-4 sm:gap-6">
