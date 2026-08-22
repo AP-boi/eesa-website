@@ -71,7 +71,7 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
                     className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold px-7 py-3.5 rounded-xl shadow-xs hover:shadow-md transition-all flex items-center justify-center gap-2 text-sm cursor-pointer"
                   >
                     <Sparkles className="w-4 h-4" />
-                    <span>Book Free Demo Class</span>
+                    <span>Book Free 1-on-1 Strategy Session</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </MagneticButton>
@@ -111,14 +111,14 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
             <div className="lg:col-span-5">
               <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-8 shadow-md border border-slate-200/80 dark:border-slate-800 relative hover:shadow-xl transition-shadow duration-300">
                 <div className="absolute -top-3 right-6 bg-emerald-600 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-0.5 rounded-full">
-                  Instant Registration
+                  1-on-1 Consultation
                 </div>
 
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight mb-1">
-                  Book a Free Demo Class
+                  Book Free 1-on-1 Strategy Session
                 </h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mb-6">
-                  Experience EESA Academy's communicative teaching methodology with zero obligation.
+                  Get a personalized 15-minute diagnostic audit and custom 60-day roadmap with certified master mentors.
                 </p>
 
                 <form
@@ -171,7 +171,7 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
                       className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg shadow-xs transition-all text-xs flex items-center justify-center gap-2 cursor-pointer"
                     >
                       <Sparkles className="w-4 h-4" />
-                      <span>Reserve Demo Seat</span>
+                      <span>Claim Free 1-on-1 Strategy Session</span>
                     </button>
                   </MagneticButton>
 

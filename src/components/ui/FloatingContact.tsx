@@ -74,7 +74,7 @@ export const FloatingContact: React.FC<FloatingContactProps> = ({ onOpenDemoModa
               </div>
             </a>
 
-            {/* Book Free Demo Modal */}
+            {/* Book Free 1-on-1 Strategy Session Modal */}
             <button
               onClick={() => {
                 setIsOpen(false);
@@ -82,12 +82,12 @@ export const FloatingContact: React.FC<FloatingContactProps> = ({ onOpenDemoModa
               }}
               className="w-full flex items-center gap-3 p-2.5 rounded-xl bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 dark:hover:bg-slate-700 text-white font-semibold transition-colors shadow-xs cursor-pointer text-left"
             >
-              <div className="w-8 h-8 rounded-lg bg-amber-500 text-white flex items-center justify-center shrink-0">
+              <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center shrink-0">
                 <Sparkles className="w-4 h-4" />
               </div>
               <div>
-                <span className="block font-bold">Book Free Demo Class</span>
-                <span className="text-[10px] text-amber-300">Reserve 1-on-1 trial session</span>
+                <span className="block font-bold">Free 1-on-1 Strategy Session</span>
+                <span className="text-[10px] text-blue-300">Diagnostic audit & 60-day roadmap</span>
               </div>
             </button>
           </div>

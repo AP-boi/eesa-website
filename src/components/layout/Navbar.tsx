@@ -253,14 +253,14 @@ export const Navbar: React.FC<NavbarProps> = ({
               </a>
             </MagneticButton>
 
-            {/* Book Free Demo Primary CTA */}
+            {/* Book Free 1-on-1 Strategy Session Primary CTA */}
             <MagneticButton strength={0.4} maxDistance={30}>
               <button
                 onClick={() => onOpenDemoModal()}
                 className="inline-flex items-center justify-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 2xl:px-3.5 2xl:py-2 rounded-xl text-xs font-bold transition-all shadow-xs hover:shadow-md active:scale-98 cursor-pointer shrink-0 whitespace-nowrap"
               >
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>Book Demo</span>
+                <span>1-on-1 Counselling</span>
               </button>
             </MagneticButton>
           </div>
@@ -414,7 +414,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-lg text-xs shadow-xs flex items-center justify-center gap-1.5 cursor-pointer mt-1"
             >
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Book Free Demo Class</span>
+              <span>Book Free 1-on-1 Strategy Session</span>
             </button>
           </div>
 

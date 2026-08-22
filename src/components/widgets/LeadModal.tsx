@@ -138,17 +138,17 @@ export const LeadModal: React.FC<LeadModalProps> = ({
             <X className="w-5 h-5" />
           </button>
           <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-1">
-            <Sparkles className="w-4 h-4" /> EESA Academy Registration
+            <Sparkles className="w-4 h-4" /> 1-on-1 Academic & Career Strategy
           </div>
           <h3 className="text-2xl font-black tracking-tight text-white">
-            {bookingType === 'free_demo' && 'Book Free Demo Class'}
-            {bookingType === 'diagnostic_test' && 'Book Level Diagnostic Test'}
-            {bookingType === 'profile_evaluation' && 'Book Overseas Profile Audit'}
-            {bookingType === 'prospectus_download' && 'Download Complete Prospectus'}
-            {bookingType === 'contact' && 'Request Callback from Faculty'}
+            {bookingType === 'free_demo' && 'Book Free 1-on-1 Strategy & Diagnostic Session'}
+            {bookingType === 'diagnostic_test' && 'Book Level Diagnostic & Band Audit'}
+            {bookingType === 'profile_evaluation' && 'Book Overseas Profile & Visa Audit'}
+            {bookingType === 'prospectus_download' && 'Download Complete Prospectus & Roadmap'}
+            {bookingType === 'contact' && 'Request Private Consultation with Academic Counselor'}
           </h3>
           <p className="text-xs text-slate-300 mt-1">
-            📍 Campus adjacent to Dashrath Puri Metro Station (Gate 1), West Delhi
+            📍 In-person at Dashrath Puri Metro Campus (Gate 1) or Live 1-on-1 via Google Meet
           </p>
         </div>
 
@@ -157,8 +157,8 @@ export const LeadModal: React.FC<LeadModalProps> = ({
           {isSubmitted ? (
             <FormSuccessState
               applicantName={fullName}
-              title="Demo Seat Reserved Successfully!"
-              subtitle={`EESA Admissions & Academic Counseling Desk will call on ${phone} to confirm your session schedule.`}
+              title="1-on-1 Strategy Session Reserved!"
+              subtitle={`EESA Admissions & Academic Counseling Desk will reach out on ${phone} to confirm your diagnostic slot and prepare your personalized 60-day roadmap.`}
               onClose={onClose}
             />
           ) : (
@@ -328,7 +328,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
               <div className="bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 rounded-xl p-3 text-xs text-blue-900 dark:text-blue-300 flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
                 <span>
-                  <strong>Zero Obligation:</strong> Free demo class includes a full 45-minute interactive diagnostic assessment with certified EESA mentors.
+                  <strong>100% Free · 15-Min Private Session:</strong> Includes CEFR/Band Diagnostic Audit, Gap Analysis, and a Tailored 60-Day Preparation Blueprint. Zero sales obligation.
                 </span>
               </div>
 
@@ -341,12 +341,12 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                 {isSubmitting ? (
                   <span className="flex items-center gap-2">
                     <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                    Processing Registration...
+                    Reserving Your Slot...
                   </span>
                 ) : (
                   <>
                     <Sparkles className="w-5 h-5" />
-                    <span>Confirm Free Demo Class Registration</span>
+                    <span>Claim Free 1-on-1 Strategy Session & Roadmap</span>
                   </>
                 )}
               </button>
