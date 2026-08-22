@@ -7,6 +7,7 @@ import {
 import { SEO } from '@/components/common/SEO';
 import { MagneticButton } from '@/components/ui/magnetic-button';
 import { submitLeadBooking } from '@/lib/supabase';
+import { sanitizeText, FranchiseInquirySchema, checkSubmissionRateLimit } from '@/lib/security';
 
 interface FranchiseProps {
   onNavigate: (page: string) => void;
@@ -21,25 +22,66 @@ export const Franchise: React.FC<FranchiseProps> = ({ onNavigate, onOpenDemoModa
     targetCity: '',
     investmentBudget: '15-25L',
     hasRealEstate: 'no',
+    honeypot: '',
   });
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage(null);
+
+    // Bot detection check
+    if (formData.honeypot) {
+      console.warn('[Security] Bot honeypot triggered on Franchise form');
+      setIsSubmitted(true);
+      return;
+    }
+
+    // Rate limiting (3 submissions per 5 min)
+    const rateCheck = checkSubmissionRateLimit('franchise_apply', 3, 300000);
+    if (!rateCheck.allowed) {
+      setErrorMessage(`Submission limit reached. Please wait ${rateCheck.retryAfterSec} seconds before retrying.`);
+      return;
+    }
+
+    // Input sanitization
+    const cleanName = sanitizeText(formData.fullName);
+    const cleanEmail = sanitizeText(formData.email);
+    const cleanPhone = formData.phone.replace(/[\s-+()]/g, '');
+    const cleanCity = sanitizeText(formData.targetCity);
+
+    // Schema Validation
+    const validation = FranchiseInquirySchema.safeParse({
+      fullName: cleanName,
+      email: cleanEmail,
+      phone: cleanPhone,
+      city: cleanCity,
+      netWorthBracket: formData.investmentBudget,
+      honeypot: formData.honeypot,
+    });
+
+    if (!validation.success) {
+      const firstErr = validation.error.issues[0]?.message || 'Invalid form input';
+      setErrorMessage(firstErr);
+      return;
+    }
+
     setIsSubmitting(true);
     try {
       await submitLeadBooking({
-        full_name: formData.fullName,
-        email: formData.email,
-        phone: formData.phone,
+        full_name: cleanName,
+        email: cleanEmail,
+        phone: cleanPhone,
         booking_type: 'prospectus_download',
         preferred_mode: 'offline',
-        notes: `[Franchise Lead] City: ${formData.targetCity} | Budget: ${formData.investmentBudget} | Real Estate: ${formData.hasRealEstate}`,
+        notes: `[Franchise Inquiry] City: ${cleanCity} | Budget: ${formData.investmentBudget} | Real Estate: ${formData.hasRealEstate}`,
       });
       setIsSubmitted(true);
     } catch (err) {
       console.error('Franchise lead submission failed:', err);
+      setErrorMessage('Unable to dispatch deck. Please contact franchise@eesaacademy.com directly.');
     } finally {
       setIsSubmitting(false);
     }
@@ -217,6 +259,23 @@ export const Franchise: React.FC<FranchiseProps> = ({ onNavigate, onOpenDemoModa
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4 text-xs">
+                  {/* Security Honeypot */}
+                  <input
+                    type="text"
+                    name="website_hp"
+                    value={formData.honeypot}
+                    onChange={(e) => setFormData({ ...formData, honeypot: e.target.value })}
+                    style={{ display: 'none', opacity: 0, position: 'absolute', left: '-9999px' }}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+
+                  {errorMessage && (
+                    <div className="p-3 bg-red-50 dark:bg-red-950/60 border border-red-200 dark:border-red-800 rounded-xl text-xs text-red-700 dark:text-red-300">
+                      {errorMessage}
+                    </div>
+                  )}
+
                   <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">
                     Franchise Partner Inquiry
                   </h3>

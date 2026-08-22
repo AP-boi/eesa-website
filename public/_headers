@@ -1,0 +1,22 @@
+/*
+  # HTTPS & HSTS
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  
+  # Anti-Clickjacking
+  X-Frame-Options: DENY
+  
+  # Anti-MIME Sniffing
+  X-Content-Type-Options: nosniff
+  
+  # Referrer Policy
+  Referrer-Policy: strict-origin-when-cross-origin
+  
+  # Device Permissions Policy (Mic scoped to self for spoken diagnostic test)
+  Permissions-Policy: geolocation=(), microphone=(self), camera=(), payment=(self), usb=(), interest-cohort=()
+  
+  # Cross-Origin Policies
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-site
+  
+  # Content Security Policy (Zero-Trust Baseline)
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://*.supabase.co https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com https://www.google.com; frame-ancestors 'none'; base-uri 'none'; form-action 'self'; object-src 'none'; upgrade-insecure-requests;

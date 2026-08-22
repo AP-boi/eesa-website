@@ -8,6 +8,7 @@ import { Button as StatefulButton } from '@/components/ui/stateful-button';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { FormSuccessState } from '@/components/ui/FormSuccessState';
 import { SEO } from '@/components/common/SEO';
+import { sanitizeText, ContactMessageSchema, checkSubmissionRateLimit } from '@/lib/security';
 
 interface ContactProps {
   courses: Course[];
@@ -20,51 +21,67 @@ export const Contact: React.FC<ContactProps> = ({ courses }) => {
   const [selectedCourseId, setSelectedCourseId] = useState('');
   const [preferredSlot, setPreferredSlot] = useState('Morning (7-10 AM)');
   const [notes, setNotes] = useState('');
+  const [honeypot, setHoneypot] = useState('');
 
   const [nameError, setNameError] = useState<string | null>(null);
   const [phoneError, setPhoneError] = useState<string | null>(null);
+  const [generalError, setGeneralError] = useState<string | null>(null);
   const [isShaking, setIsShaking] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const validateForm = () => {
-    let isValid = true;
+  const handleSubmit = async () => {
     setNameError(null);
     setPhoneError(null);
+    setGeneralError(null);
 
-    if (!fullName.trim()) {
-      setNameError('Your full name is required.');
-      isValid = false;
+    // Bot detection check
+    if (honeypot) {
+      console.warn('[Security] Bot honeypot triggered on Contact form');
+      setSubmitted(true);
+      return;
     }
 
+    // Rate limit
+    const rateCheck = checkSubmissionRateLimit('contact_form', 3, 60000);
+    if (!rateCheck.allowed) {
+      setGeneralError(`Too many messages. Please wait ${rateCheck.retryAfterSec} seconds before retrying.`);
+      return;
+    }
+
+    // Sanitize
+    const cleanName = sanitizeText(fullName);
     const cleanPhone = phone.replace(/[\s-+()]/g, '');
-    if (!cleanPhone) {
-      setPhoneError('Mobile number is required.');
-      isValid = false;
-    } else if (cleanPhone.length < 10) {
-      setPhoneError('Please enter a valid 10-digit mobile number.');
-      isValid = false;
-    }
+    const cleanEmail = sanitizeText(email);
+    const cleanNotes = sanitizeText(notes);
 
-    if (!isValid) {
+    // Validation
+    const validation = ContactMessageSchema.safeParse({
+      fullName: cleanName,
+      phone: cleanPhone,
+      email: cleanEmail,
+      subject: selectedCourseId || 'General Inquiry',
+      message: cleanNotes || 'Requesting campus consultation',
+      honeypot,
+    });
+
+    if (!validation.success) {
+      const fieldErrors = validation.error.flatten().fieldErrors;
+      if (fieldErrors.fullName) setNameError(fieldErrors.fullName[0]);
+      if (fieldErrors.phone) setPhoneError(fieldErrors.phone[0]);
       setIsShaking(true);
       setTimeout(() => setIsShaking(false), 500);
+      return;
     }
 
-    return isValid;
-  };
-
-  const handleSubmit = async () => {
-    if (!validateForm()) return;
-
     await submitLeadBooking({
-      full_name: fullName.trim(),
-      phone: phone.trim(),
-      email: email.trim() || `${phone.trim()}@eesa-contact.com`,
+      full_name: cleanName,
+      phone: cleanPhone,
+      email: cleanEmail || `${cleanPhone}@eesa-contact.com`,
       preferred_course_id: selectedCourseId || null,
       booking_type: 'contact',
       preferred_mode: 'offline',
       preferred_time_slot: preferredSlot,
-      notes: notes.trim(),
+      notes: cleanNotes,
     });
     setSubmitted(true);
   };
@@ -236,6 +253,24 @@ export const Contact: React.FC<ContactProps> = ({ courses }) => {
                 }}
                 className="space-y-4"
               >
+                {/* Security Honeypot */}
+                <input
+                  type="text"
+                  name="website_hp"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  style={{ display: 'none', opacity: 0, position: 'absolute', left: '-9999px' }}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+
+                {generalError && (
+                  <div className="p-3 bg-red-50 dark:bg-red-950/60 border border-red-200 dark:border-red-800 rounded-xl text-xs text-red-700 dark:text-red-300 flex items-center gap-2">
+                    <AlertCircle className="w-4 h-4 shrink-0 text-red-600 dark:text-red-400" />
+                    <span>{generalError}</span>
+                  </div>
+                )}
+
                 <div>
                   <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                     Your Full Name <span className="text-blue-600 dark:text-blue-400">*</span>

@@ -4,6 +4,8 @@ import { Course, DeliveryMode, LeadBooking } from '../../types/database';
 import { submitLeadBooking } from '../../lib/supabase';
 import { FormSuccessState } from '../ui/FormSuccessState';
 
+import { sanitizeText, StudentLeadSchema, checkSubmissionRateLimit } from '../../lib/security';
+
 interface LeadModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -27,9 +29,11 @@ export const LeadModal: React.FC<LeadModalProps> = ({
   const [preferredMode, setPreferredMode] = useState<DeliveryMode>('offline');
   const [preferredTimeSlot, setPreferredTimeSlot] = useState('Morning (7-10 AM)');
   const [notes, setNotes] = useState('');
+  const [honeypot, setHoneypot] = useState('');
   
   const [nameError, setNameError] = useState<string | null>(null);
   const [phoneError, setPhoneError] = useState<string | null>(null);
+  const [generalError, setGeneralError] = useState<string | null>(null);
   const [isShaking, setIsShaking] = useState(false);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -46,58 +50,75 @@ export const LeadModal: React.FC<LeadModalProps> = ({
       setIsSubmitted(false);
       setNameError(null);
       setPhoneError(null);
+      setGeneralError(null);
     }
   }, [isOpen]);
 
   if (!isOpen) return null;
 
-  const validateForm = () => {
-    let isValid = true;
-    setNameError(null);
-    setPhoneError(null);
-
-    if (!fullName.trim()) {
-      setNameError('Full name is required.');
-      isValid = false;
-    }
-
-    const cleanPhone = phone.replace(/[\s-+()]/g, '');
-    if (!cleanPhone) {
-      setPhoneError('Mobile number is required for booking.');
-      isValid = false;
-    } else if (cleanPhone.length < 10) {
-      setPhoneError('Please enter a valid 10-digit mobile number.');
-      isValid = false;
-    }
-
-    if (!isValid) {
-      setIsShaking(true);
-      setTimeout(() => setIsShaking(false), 500);
-    }
-
-    return isValid;
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!validateForm()) return;
+    setNameError(null);
+    setPhoneError(null);
+    setGeneralError(null);
+
+    // Bot detection check
+    if (honeypot) {
+      console.warn('[Security] Bot honeypot triggered on LeadModal');
+      setIsSubmitted(true);
+      return;
+    }
+
+    // Rate limiting
+    const rateCheck = checkSubmissionRateLimit('lead_modal', 3, 60000);
+    if (!rateCheck.allowed) {
+      setGeneralError(`Too many requests. Please wait ${rateCheck.retryAfterSec} seconds before retrying.`);
+      return;
+    }
+
+    // Sanitize inputs
+    const cleanName = sanitizeText(fullName);
+    const cleanPhone = phone.replace(/[\s-+()]/g, '');
+    const cleanEmail = sanitizeText(email);
+    const cleanNotes = sanitizeText(notes);
+
+    // Zod Schema Validation
+    const validation = StudentLeadSchema.safeParse({
+      fullName: cleanName,
+      phone: cleanPhone,
+      email: cleanEmail,
+      courseId: selectedCourseId || 'spoken-english-fluency',
+      notes: cleanNotes,
+      honeypot,
+    });
+
+    if (!validation.success) {
+      const fieldErrors = validation.error.flatten().fieldErrors;
+      if (fieldErrors.fullName) setNameError(fieldErrors.fullName[0]);
+      if (fieldErrors.phone) setPhoneError(fieldErrors.phone[0]);
+      setIsShaking(true);
+      setTimeout(() => setIsShaking(false), 500);
+      return;
+    }
 
     setIsSubmitting(true);
     const booking: LeadBooking = {
-      full_name: fullName.trim(),
-      phone: phone.trim(),
-      email: email.trim() || `${phone.trim()}@eesa-applicant.com`,
+      full_name: cleanName,
+      phone: cleanPhone,
+      email: cleanEmail || `${cleanPhone}@eesa-applicant.com`,
       preferred_course_id: selectedCourseId || null,
       booking_type: bookingType,
       preferred_mode: preferredMode,
       preferred_time_slot: preferredTimeSlot,
-      notes: notes.trim(),
+      notes: cleanNotes,
     };
 
     const res = await submitLeadBooking(booking);
     setIsSubmitting(false);
     if (res.success) {
       setIsSubmitted(true);
+    } else {
+      setGeneralError('Unable to reserve seat. Please contact our admissions desk directly.');
     }
   };
 
@@ -142,7 +163,24 @@ export const LeadModal: React.FC<LeadModalProps> = ({
             />
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
-              
+              {/* Security Honeypot (Invisible to users, traps automated bots) */}
+              <input
+                type="text"
+                name="website_hp"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+                style={{ display: 'none', opacity: 0, position: 'absolute', left: '-9999px' }}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+
+              {generalError && (
+                <div className="p-3 bg-red-50 dark:bg-red-950/60 border border-red-200 dark:border-red-800 rounded-xl text-xs text-red-700 dark:text-red-300 flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4 shrink-0 text-red-600 dark:text-red-400" />
+                  <span>{generalError}</span>
+                </div>
+              )}
+
               {/* Full Name */}
               <div>
                 <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
