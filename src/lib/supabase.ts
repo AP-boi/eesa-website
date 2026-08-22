@@ -233,13 +233,16 @@ export const INITIAL_REVIEWS: StudentReview[] = [
 export async function getCourses(): Promise<Course[]> {
   try {
     if (import.meta.env.VITE_SUPABASE_URL) {
-      const { data, error } = await supabase.from('courses').select('*').order('is_featured', { ascending: false });
+      const { data, error } = await supabase
+        .from('courses')
+        .select('id, slug, title, category, short_description, full_description, target_audience, learning_outcomes, duration_weeks, batch_modes, monthly_fee_inr, package_fee_inr, features, is_featured')
+        .order('is_featured', { ascending: false });
       if (!error && data && data.length > 0) {
         return data as Course[];
       }
     }
   } catch (e) {
-    console.warn('Using local fallback for courses:', e);
+    console.warn('Using local fallback for courses');
   }
   return INITIAL_COURSES;
 }
@@ -247,13 +250,16 @@ export async function getCourses(): Promise<Course[]> {
 export async function getStudentReviews(): Promise<StudentReview[]> {
   try {
     if (import.meta.env.VITE_SUPABASE_URL) {
-      const { data, error } = await supabase.from('student_reviews').select('*').order('created_at', { ascending: false });
+      const { data, error } = await supabase
+        .from('student_reviews')
+        .select('id, student_name, course_taken, score_achieved, review_text, rating, source, scorecard_image_url, is_verified, created_at')
+        .order('created_at', { ascending: false });
       if (!error && data && data.length > 0) {
         return data as StudentReview[];
       }
     }
   } catch (e) {
-    console.warn('Using local fallback for reviews:', e);
+    console.warn('Using local fallback for reviews');
   }
   return INITIAL_REVIEWS;
 }

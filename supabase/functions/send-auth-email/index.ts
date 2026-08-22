@@ -2,9 +2,22 @@
 // Triggered on user signup / signin events
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+const ALLOWED_ORIGINS = [
+  'https://eesaacademy.com',
+  'https://www.eesaacademy.com',
+  'http://localhost:3000',
+  'http://localhost:5173',
+];
+
+const getCorsHeaders = (origin: string | null) => {
+  const isAllowed = origin && ALLOWED_ORIGINS.includes(origin);
+  return {
+    'Access-Control-Allow-Origin': isAllowed ? origin : 'https://eesaacademy.com',
+    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-request-timestamp, x-client-platform',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Credentials': 'true',
+    'Vary': 'Origin',
+  };
 };
 
 interface EmailPayload {
@@ -16,6 +29,9 @@ interface EmailPayload {
 }
 
 serve(async (req) => {
+  const origin = req.headers.get('origin');
+  const corsHeaders = getCorsHeaders(origin);
+
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders });
   }
