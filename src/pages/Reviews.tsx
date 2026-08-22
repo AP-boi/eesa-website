@@ -5,6 +5,7 @@ import {
 import { StudentReview } from '../types/database';
 import { ScorecardLightbox } from '../components/widgets/ScorecardLightbox';
 import { VideoModal } from '../components/widgets/VideoModal';
+import { SEO } from '@/components/common/SEO';
 
 interface ReviewsProps {
   reviews: StudentReview[];
@@ -24,7 +25,12 @@ export const Reviews: React.FC<ReviewsProps> = ({ reviews, onOpenDemoModal }) =>
     : reviews.filter((r) => r.course_taken.toLowerCase().includes(selectedFilter.toLowerCase()));
 
   return (
-    <div className="space-y-16 py-8 sm:py-12">
+    <div className="space-y-16 py-8 sm:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SEO
+        title="Student Reviews, Scorecards & Success Stories | EESA Academy"
+        description="Read 315+ verified 5-star reviews from students who scored IELTS Band 8.0+, PTE 82+, OET Grade B and transformed spoken English fluency at EESA Academy."
+        canonicalUrl="/reviews"
+      />  
       
       {/* HEADER HERO */}
       <section className="bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-slate-800 text-center space-y-4">
@@ -37,7 +43,7 @@ export const Reviews: React.FC<ReviewsProps> = ({ reviews, onOpenDemoModal }) =>
         </h1>
 
         <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
-          Real results achieved by West Delhi students under Prashant Sir's mentorship across IELTS, PTE Academic, OET Healthcare, and Spoken English.
+          Real scorecards and fluency results achieved by West Delhi students under Founder Neetu Devi's academic framework across IELTS, PTE Academic, OET Healthcare, and Spoken English.
         </p>
 
         {/* MULTI-PLATFORM RATINGS BAR */}
@@ -98,7 +104,7 @@ export const Reviews: React.FC<ReviewsProps> = ({ reviews, onOpenDemoModal }) =>
                   className="relative h-44 rounded-xl overflow-hidden mb-4 cursor-pointer group bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
                 >
                   <img
-                    src={rev.scorecard_image_url || 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&auto=format&fit=crop&q=80'}
+                    src={rev.scorecard_image_url || '/images/eesa/ielts-scorecard.jpg'}
                     alt={rev.student_name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -155,17 +161,17 @@ export const Reviews: React.FC<ReviewsProps> = ({ reviews, onOpenDemoModal }) =>
               {
                 name: 'Neha Roy (IELTS 8.0)',
                 title: 'From Hesitant Speaker to UK University Admit',
-                thumbnail: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&auto=format&fit=crop&q=80',
+                thumbnail: '/images/eesa/eesa-ielts-session-1.jpeg',
               },
               {
                 name: 'Karan Malhotra (PTE 82)',
                 title: 'PTE Speaking Pronunciation & Template Strategy',
-                thumbnail: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&auto=format&fit=crop&q=80',
+                thumbnail: '/images/eesa/eesa-classroom-training-1.jpeg',
               },
               {
                 name: 'Sr. Mary Kurian (OET Grade B)',
                 title: 'Working Nurse Shift Batch Experience at EESA',
-                thumbnail: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=600&auto=format&fit=crop&q=80',
+                thumbnail: '/images/eesa/eesa-student-activity-1.jpeg',
               },
             ].map((vid, idx) => (
               <div

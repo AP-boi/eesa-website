@@ -4,6 +4,7 @@ import {
   ArrowRight, ShieldCheck, Clock, Users, Building, Phone
 } from 'lucide-react';
 import { Course } from '../types/database';
+import { SEO } from '@/components/common/SEO';
 
 interface StudyAbroadProps {
   courses: Course[];
@@ -15,6 +16,11 @@ export const StudyAbroad: React.FC<StudyAbroadProps> = ({ courses, onOpenDemoMod
 
   return (
     <div className="space-y-16 py-8 sm:py-12">
+      <SEO
+        title="Study Abroad Consulting, OET Healthcare, IELTS & PTE | EESA Academy"
+        description="End-to-end overseas university admissions, scholarship assistance, and international test prep (IELTS 8.0+, PTE 79+, OET Grade B for UK NHS & Australia)."
+        canonicalUrl="/study-abroad"
+      />
       
       {/* HEADER HERO */}
       <section className="bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900 text-white rounded-3xl p-8 sm:p-14 shadow-2xl border border-slate-800 relative overflow-hidden">
@@ -192,7 +198,7 @@ export const StudyAbroad: React.FC<StudyAbroadProps> = ({ courses, onOpenDemoMod
                 </div>
                 <div className="bg-slate-50 dark:bg-slate-800/60 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
                   <h4 className="font-bold text-slate-900 dark:text-white text-sm text-blue-700 dark:text-blue-400">Speaking Cue Cards</h4>
-                  <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">1-on-1 mock panel daily with Prashant Sir for fluency and accent calibration.</p>
+                  <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">Daily 1-on-1 mock speaking interviews with certified trainers for fluency & accent calibration.</p>
                 </div>
                 <div className="bg-slate-50 dark:bg-slate-800/60 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
                   <h4 className="font-bold text-slate-900 dark:text-white text-sm text-blue-700 dark:text-blue-400">Reading Speed Drills</h4>

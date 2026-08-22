@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import {
   GraduationCap, Award, ShieldCheck, Users, CheckCircle2, MapPin, Building2,
-  Sparkles, HeartHandshake, Eye, BookOpen, Clock, Phone
+  Sparkles, HeartHandshake, Eye, BookOpen, Clock, Phone, ArrowRight
 } from 'lucide-react';
+import { SEO } from '@/components/common/SEO';
 
 interface AboutProps {
   onNavigate: (page: string) => void;
@@ -22,7 +23,7 @@ export const About: React.FC<AboutProps> = ({ onNavigate, onOpenDemoModal }) => 
     {
       category: 'classrooms',
       title: 'Senior Faculty Whiteboard Training Session',
-      subtitle: 'Structured grammar deconstruction & speaking drills with mentor Prashant Sir',
+      subtitle: 'Structured grammar deconstruction & speaking drills with certified master faculty',
       url: '/images/eesa/eesa-classroom-training-1.jpeg',
     },
     {
@@ -69,6 +70,11 @@ export const About: React.FC<AboutProps> = ({ onNavigate, onOpenDemoModal }) => 
 
   return (
     <div className="space-y-16 py-8 sm:py-12">
+      <SEO
+        title="About Us & Campus Tour | Dashrath Puri Metro, West Delhi"
+        description="Learn about EESA Academy (Expert Educational Services Academy Pvt Ltd), our founding story, air-conditioned campus tour, and communicative pedagogy founded by Neetu Devi."
+        canonicalUrl="/about"
+      />
       
       {/* HEADER HERO */}
       <section className="bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900 text-white rounded-3xl p-8 sm:p-14 shadow-2xl border border-slate-800 relative overflow-hidden">
@@ -86,7 +92,7 @@ export const About: React.FC<AboutProps> = ({ onNavigate, onOpenDemoModal }) => 
           </p>
 
           <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
-            Established in 2022 under <strong className="text-white">Expert Educational Services Academy Private Limited</strong>, EESA Academy was founded with a singular mission: to eliminate speech hesitation, empower West Delhi students with international language fluency, and deliver top band scores in IELTS, PTE, OET, and CELPIP exams.
+            Established in 2022 under <strong className="text-white">Expert Educational Services Academy Private Limited</strong> by Founder & Managing Director <strong className="text-white">Neetu Devi</strong>, EESA Academy was built with a singular mission: to eliminate speech hesitation, empower West Delhi students with international language fluency, and deliver top band scores in IELTS, PTE, OET, and CELPIP exams.
           </p>
         </div>
       </section>
@@ -155,13 +161,13 @@ export const About: React.FC<AboutProps> = ({ onNavigate, onOpenDemoModal }) => 
         <div className="bg-gradient-to-br from-slate-900 to-blue-950 rounded-3xl p-8 sm:p-12 text-white border border-slate-800 shadow-2xl">
           <div className="max-w-3xl mb-8">
             <span className="text-xs font-extrabold text-blue-400 uppercase tracking-wider bg-blue-900/60 px-3 py-1 rounded-full border border-blue-700">
-              Lead Mentor Spotlight
+              Founder-Led Pedagogy
             </span>
             <h2 className="text-3xl font-black text-white tracking-tight mt-3">
-              Meet Senior Faculty Mentor: Prashant Sir
+              The EESA Communicative Framework
             </h2>
             <p className="text-xs sm:text-sm text-slate-300 mt-2">
-              Renowned across West Delhi for his patient step-by-step methodology, accent neutralization drills, and personalized 1-on-1 speaking interview corrections.
+              Designed by Founder Neetu Devi and executed by certified master trainers for step-by-step accent neutralization, grammar clarity, and personalized 1-on-1 speaking interview corrections.
             </p>
           </div>
 
@@ -195,6 +201,32 @@ export const About: React.FC<AboutProps> = ({ onNavigate, onOpenDemoModal }) => 
                 Every student receives individual speaking feedback sessions daily, simulating real examiner environments.
               </p>
             </div>
+          </div>
+
+          {/* Founder Executive Card */}
+          <div className="mt-8 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-6 bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
+            <div className="flex items-center gap-4">
+              <img
+                src="/images/eesa/neetu-devi-founder.jpg"
+                alt="Neetu Devi — Founder & Managing Director"
+                className="w-16 h-16 rounded-full object-cover object-top border-2 border-blue-400 shadow-lg shrink-0"
+              />
+              <div>
+                <h3 className="text-base font-bold text-white">Neetu Devi</h3>
+                <p className="text-xs text-blue-400 font-semibold">Founder & Managing Director</p>
+                <p className="text-xs text-slate-300 mt-1 max-w-lg">
+                  "At EESA, our pedagogy treats English as an empowering life skill, not an intimidating examination."
+                </p>
+              </div>
+            </div>
+
+            <button
+              onClick={() => onNavigate('founder')}
+              className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-5 py-3 rounded-xl transition-all flex items-center gap-2 shadow-md shrink-0 cursor-pointer"
+            >
+              <span>Meet the Founder & Story</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </div>
         </div>
       </section>

@@ -36,7 +36,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ isOpen, videoTitle, onCl
           <div>
             <h4 className="text-xl font-bold text-white">Speech Transformation Showcase</h4>
             <p className="text-xs text-slate-400 max-w-md mx-auto mt-1">
-              Interactive recording clip demonstrating before-and-after accent neutralization and fluency improvement under Prashant Sir's 1-on-1 mentorship.
+              Interactive recording clip demonstrating before-and-after accent neutralization and fluency improvement under Founder Neetu Devi's communicative framework.
             </p>
           </div>
 

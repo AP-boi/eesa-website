@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your EESA Academy Login Access</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0b0f19;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #e2e8f0;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrapper {
+      width: 100%;
+      table-layout: fixed;
+      background-color: #0b0f19;
+      padding: 40px 0 60px;
+    }
+    .main-table {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #111827;
+      border: 1px solid #1e293b;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+    }
+    .header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%);
+      padding: 36px 30px;
+      text-align: center;
+      border-bottom: 2px solid #2563eb;
+    }
+    .logo-badge {
+      display: inline-block;
+      background-color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+    .logo-text {
+      color: #0f172a;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+    .hero-title {
+      color: #ffffff;
+      font-size: 24px;
+      font-weight: 800;
+      margin: 0 0 8px;
+    }
+    .hero-sub {
+      color: #93c5fd;
+      font-size: 13px;
+      margin: 0;
+    }
+    .content-body {
+      padding: 32px 30px;
+      background-color: #111827;
+    }
+    .greeting {
+      font-size: 16px;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 16px;
+    }
+    .text-p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #cbd5e1;
+      margin-bottom: 20px;
+    }
+    .button-container {
+      text-align: center;
+      margin: 28px 0;
+    }
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: #ffffff !important;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 800;
+      padding: 15px 32px;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.5);
+    }
+    .security-note {
+      background-color: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 16px;
+      font-size: 12px;
+      color: #94a3b8;
+      margin: 24px 0;
+    }
+    .footer {
+      background-color: #0a0e17;
+      padding: 24px 30px;
+      border-top: 1px solid #1e293b;
+      font-size: 11px;
+      color: #64748b;
+      text-align: center;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <table class="main-table" cellpadding="0" cellspacing="0" width="100%">
+      <!-- Header -->
+      <tr>
+        <td class="header">
+          <div class="logo-badge">
+            <span class="logo-text">🎓 EESA ACADEMY</span>
+          </div>
+          <h1 class="hero-title">Student Portal Login Link</h1>
+          <p class="hero-sub">Secure One-Click Authentication</p>
+        </td>
+      </tr>
+
+      <!-- Body Content -->
+      <tr>
+        <td class="content-body">
+          <div class="greeting">Hello {{ .Data.full_name | default "Student" }},</div>
+          
+          <p class="text-p">
+            We received a request to access your student portal on <strong>EESA Academy</strong>. Click the secure login button below to instantly sign in without typing your password:
+          </p>
+
+          <!-- Primary CTA Button -->
+          <div class="button-container">
+            <a href="{{ .ConfirmationURL }}" class="cta-button" target="_blank">
+              🚀 Log In to EESA Student Portal
+            </a>
+          </div>
+
+          <div class="security-note">
+            🛡️ <strong>Security Verification:</strong><br>
+            If you did not request this login link, your account is safe and you can disregard this email. The link will automatically expire in 10 minutes.
+          </div>
+
+          <p class="text-p" style="font-size: 13px; color: #94a3b8;">
+            Need help with your course schedule, mock tests, or fee receipts? Connect directly with the academy helpdesk on WhatsApp at <a href="https://wa.me/919810126691" style="color: #34d399; font-weight: bold;">+91 98101 26691</a>.
+          </p>
+        </td>
+      </tr>
+
+      <!-- Footer -->
+      <tr>
+        <td class="footer">
+          <p style="margin: 4px 0;">
+            <strong>Expert Educational Services Academy Pvt Ltd</strong><br>
+            RZ-A-1/14B, First Floor, Vijay Enclave, Opp. Shani Dev Mandir, Dabri-Palam Road, New Delhi - 110045 (Adjacent to Dashrath Puri Metro Gate No. 1).
+          </p>
+          <p style="margin-top: 8px; color: #334155;">
+            © 2026 EESA Academy. All rights reserved.
+          </p>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

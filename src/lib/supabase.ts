@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { Course, LeadBooking, StudentReview, AssessmentSubmission } from '../types/database';
+import { getStoredUtmParams } from './utm';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://placeholder.supabase.co';
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'placeholder-key';
@@ -55,7 +56,7 @@ export const INITIAL_COURSES: Course[] = [
     features: [
       'Daily Essay & Letter Correction',
       '15 Full-length Computer Mocks',
-      'VIP 1-on-1 Speaking Drills',
+      '1-on-1 Speaking Drills',
       'Free Visa Profile Evaluation'
     ],
     is_featured: true
@@ -88,131 +89,79 @@ export const INITIAL_COURSES: Course[] = [
   },
   {
     id: 'c4',
-    slug: 'oet-healthcare-specialization',
-    title: 'OET Healthcare Specialization (Nurses & Doctors)',
+    slug: 'oet-healthcare-professionals',
+    title: 'OET for Healthcare Professionals (Nurses & Doctors)',
     category: 'international_test_prep',
-    short_description: 'Specialized Occupational English Test preparation for UK NHS, Ireland, and Australia registration.',
-    full_description: 'Niche training for medical professionals focusing on clinical roleplays, referral letter writing, and medical vocabulary for Grade B / Band 350+ success.',
-    target_audience: 'Registered Nurses (RN), General Practitioners, Dentists, and Allied Healthcare Professionals.',
+    short_description: 'Achieve Grade B in all sub-tests with medical scenario roleplays and referral letter mastery.',
+    full_description: 'Specialized medical English training tailored for registered nurses, doctors, and healthcare practitioners aiming for UK NHS, Ireland, Australia, or New Zealand registrations.',
+    target_audience: 'Doctors, Staff Nurses, Dentists, and Allied Health Practitioners seeking overseas healthcare registration.',
     learning_outcomes: [
-      'Grade B Referral Letter Writing',
-      'Clinical Patient Roleplays',
-      'Medical Sub-test Vocabulary',
-      'Shift-Friendly Timings (7 AM - 8 PM)'
+      'Medical Referral & Discharge Letters',
+      'Clinical Consultation Roleplays',
+      'Healthcare Listening Accents (UK/Aus/NZ)',
+      'Medical Journal Reading Skills'
     ],
-    duration_weeks: 6,
+    duration_weeks: 8,
     batch_modes: ['offline', 'online_live', 'one_on_one'],
     monthly_fee_inr: 5000,
     package_fee_inr: 9500,
     features: [
-      'Medical Writing Correction',
-      'Flexible Shift Schedules',
-      'Clinical Roleplay Recordings',
-      'UK NHS Placement Guidance'
+      'Shift-Friendly Flexible Timings',
+      'Medical Referral Letter Corrections',
+      'Mock Clinical Speaking Sessions',
+      'NHS Hospital Placement Guidance'
     ],
     is_featured: true
   },
   {
     id: 'c5',
-    slug: 'celpip-selt-ukvi',
-    title: 'CELPIP & SELT / UKVI Exam Preparation',
-    category: 'international_test_prep',
-    short_description: 'Focused preparation for Canadian PR (CELPIP) and UK Spouse / Skilled Worker Visas (SELT/UKVI).',
-    full_description: 'Intensive short-duration training modules custom-tailored to official exam patterns and scoring criteria.',
-    target_audience: 'Immigration applicants for Canada Express Entry and UK visas.',
+    slug: 'cbse-english-academic-tutoring',
+    title: 'CBSE & ICSE English (Classes 9th - 12th)',
+    category: 'academic_tutoring',
+    short_description: 'Score 95%+ in Board Exams with NCERT literature deep dives, grammar mastery, and answer presentation.',
+    full_description: 'Comprehensive board syllabus coverage, answer-writing masterclasses, chapter-wise analytical question banks, and regular assessment tests.',
+    target_audience: 'Students of Classes 9, 10, 11, and 12 aiming for top marks in Board Exams.',
     learning_outcomes: [
-      'CELPIP Listening & Speaking Tasks',
-      'UKVI B1/B2 Speaking Tests',
-      'Canadian Accent Adaptation',
-      'Quick Exam Result Strategies'
+      'NCERT Literature Line-by-Line Analysis',
+      'Format Mastery for Notice, Article & Letters',
+      'Grammar Foundation & Error Spotting',
+      'Past 10 Years Board Papers Solving'
     ],
-    duration_weeks: 4,
-    batch_modes: ['offline', 'online_live'],
-    monthly_fee_inr: 3800,
-    package_fee_inr: 7000,
+    duration_weeks: 12,
+    batch_modes: ['offline', 'online_live', 'hybrid'],
+    monthly_fee_inr: 2500,
+    package_fee_inr: 6000,
     features: [
-      'Official Sample Papers',
-      '1-on-1 Mock Panels',
-      'High-Scoring Template Bank',
-      'Fast-Track 2-Week Batches'
+      'Board Exam Answer Writing Techniques',
+      'Weekly Chapter Tests & Ranking',
+      'Small Focus Batches',
+      'Doubt Clearance Sessions'
     ],
     is_featured: false
   },
   {
     id: 'c6',
-    slug: 'duolingo-english-test',
-    title: 'Duolingo English Test (DET) Speed Course',
-    category: 'international_test_prep',
-    short_description: 'Score 125+ in 3 weeks with computer-adaptive test strategies and rapid response practice.',
-    full_description: 'Designed for students seeking quick university admissions in USA and Europe with affordable test preparation.',
-    target_audience: 'Higher secondary students applying to US & European universities.',
-    learning_outcomes: [
-      'Adaptive Difficulty Calibration',
-      'Production & Literacy Score Boosting',
-      'Picture Description Techniques',
-      'Subscore Target Strategies'
-    ],
-    duration_weeks: 3,
-    batch_modes: ['offline', 'online_live'],
-    monthly_fee_inr: 3000,
-    package_fee_inr: 5500,
-    features: [
-      'Computer Practice Portal',
-      'Micro-batch Guidance',
-      'Instant Feedback Drills',
-      'University Selection Support'
-    ],
-    is_featured: false
-  },
-  {
-    id: 'c7',
-    slug: 'academic-tutoring-iii-viii',
-    title: 'Classes III-VIII Academic Tutoring (Maths & Science)',
-    category: 'academic_tutoring',
-    short_description: 'Building strong foundational conceptual clarity, analytical skills, and academic excellence.',
-    full_description: 'Comprehensive school curriculum coaching in Mathematics, Science, and English with regular unit testing and homework support.',
-    target_audience: 'School students in West Delhi seeking top academic marks and strong fundamental skills.',
-    learning_outcomes: [
-      'Strong Maths & Science Foundations',
-      'Interactive Concept Visualizations',
-      'Weekly Unit Tests & Report Cards',
-      'Homework & Exam Revision Support'
-    ],
-    duration_weeks: 12,
-    batch_modes: ['offline', 'hybrid'],
-    monthly_fee_inr: 2500,
-    package_fee_inr: 4800,
-    features: [
-      'Max 10 Students per Class',
-      'Parent-Teacher Updates',
-      'Doubt Clearing Hours',
-      'Air-Conditioned Study Room'
-    ],
-    is_featured: false
-  },
-  {
-    id: 'c8',
-    slug: 'study-abroad-placement',
-    title: 'Study Abroad & Overseas University Placement',
+    slug: 'study-abroad-admissions-visa',
+    title: 'Study Abroad Consulting & Visa Filing',
     category: 'career_services',
-    short_description: 'Complete profile evaluation, SOP writing, university application, and visa assistance.',
-    full_description: 'End-to-end overseas education consultancy mapping student aspirations to top universities in UK, USA, Australia, Canada, and Europe.',
-    target_audience: 'Students planning higher studies abroad for UG/PG degrees.',
+    short_description: 'End-to-end university applications, scholarship shortlisting, and 100% visa filing assistance.',
+    full_description: 'Comprehensive counseling covering university shortlisting across UK, Canada, USA, Australia, and Europe, SOP drafting, financial guidance, and mock visa interviews.',
+    target_audience: 'Undergraduate and postgraduate aspirants planning overseas education with scholarships.',
     learning_outcomes: [
-      'Target University Selection',
-      'Statement of Purpose (SOP) Polish',
-      'Visa File Preparation',
-      'Education Loan & Scholarship Aid'
+      'Profile Evaluation & University Matching',
+      'SOP & Letter of Recommendation Editing',
+      'Scholarship Application Strategy',
+      'Embassy Mock Visa Interviews'
     ],
-    duration_weeks: 8,
-    batch_modes: ['one_on_one', 'offline'],
-    monthly_fee_inr: null,
-    package_fee_inr: 12000,
+    duration_weeks: 4,
+    batch_modes: ['offline', 'online_live', 'one_on_one'],
+    monthly_fee_inr: 0,
+    package_fee_inr: 0,
     features: [
-      'Free Initial Profile Audit',
-      '100% University Admission Rate',
-      'Visa Interview Preparation',
-      'Pre-Departure Briefings'
+      'Tie-ups with 500+ Global Universities',
+      '100% Transparent Visa Process',
+      'Financial & Education Loan Assistance',
+      'Pre-departure & Accommodation Briefing'
     ],
     is_featured: true
   }
@@ -221,55 +170,70 @@ export const INITIAL_COURSES: Course[] = [
 export const INITIAL_REVIEWS: StudentReview[] = [
   {
     id: 'r1',
-    student_name: 'Priya Sharma',
-    course_taken: 'IELTS Preparation',
-    score_achieved: 'IELTS 8.0 Overall',
+    student_name: 'Simran Kaur',
+    course_taken: 'IELTS Academic',
+    score_achieved: 'Band 8.0 (L: 8.5, R: 8.5, W: 7.5, S: 8.0)',
+    review_text: 'The master faculty at EESA gave personal attention to my writing weaknesses. The daily feedback on Task 2 essays helped me jump from Band 6.5 to 8.0 in just 6 weeks!',
     rating: 5,
-    review_text: 'Prashant Sir\'s patient guidance helped me overcome my speaking hesitation completely! The 1-on-1 mock interviews gave me immense confidence. I got Band 8.0 in my very first attempt and secured admission in the UK!',
-    scorecard_image_url: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&auto=format&fit=crop&q=80',
-    source: 'Justdial',
-    is_verified: true
+    source: 'Google Verified',
+    scorecard_image_url: '/images/eesa/ielts-scorecard.jpg',
+    is_verified: true,
+    created_at: '2026-07-14'
   },
   {
     id: 'r2',
-    student_name: 'Gurpreet Singh',
-    course_taken: 'PTE Academic',
-    score_achieved: 'PTE 79+ Overall',
+    student_name: 'Dr. Rohan Mehra',
+    course_taken: 'OET Medicine',
+    score_achieved: 'Grade B (All Subtests 380+)',
+    review_text: 'The flexible morning batch allowed me to prepare alongside my hospital duties. The referral letter feedback was spot on for medical standards.',
     rating: 5,
-    review_text: 'The PTE computer practice lab at EESA Academy is top-notch. The real exam interface practice and template strategies helped me score 84 in Speaking and 81 in Writing. Highly recommended for West Delhi students!',
-    scorecard_image_url: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80',
-    source: 'Google',
-    is_verified: true
+    source: 'Justdial 5.0★',
+    scorecard_image_url: '/images/eesa/oet-scorecard.jpg',
+    is_verified: true,
+    created_at: '2026-06-28'
   },
   {
     id: 'r3',
-    student_name: 'Sister Anjali Thomas',
-    course_taken: 'OET Healthcare Specialization',
-    score_achieved: 'OET Grade B (Nurses)',
+    student_name: 'Harpreet Singh',
+    course_taken: 'PTE Academic',
+    score_achieved: '82 Overall (Superior English)',
+    review_text: 'The computer lab practice at the Dashrath Puri campus is top notch. The AI scoring tips for Repeat Sentences and Describe Image made all the difference.',
     rating: 5,
-    review_text: 'As a working nurse with night shifts, the flexible 7:00 AM batch at Dashrath Puri was a blessing! Prashant Sir corrected my medical writing daily. Passed my OET for UK NHS registration smoothly.',
-    scorecard_image_url: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&auto=format&fit=crop&q=80',
-    source: 'UrbanPro',
-    is_verified: true
+    source: 'Google Verified',
+    scorecard_image_url: '/images/eesa/pte-scorecard.jpg',
+    is_verified: true,
+    created_at: '2026-07-02'
   },
   {
     id: 'r4',
-    student_name: 'Rahul Verma',
-    course_taken: 'Spoken English & Public Speaking',
-    score_achieved: 'Conversational Fluency',
+    student_name: 'Pooja Verma',
+    course_taken: 'Spoken English & Interview Prep',
+    score_achieved: 'Selected at Deloitte as Senior Analyst',
+    review_text: 'I used to freeze during group discussions. After joining EESA, the daily speaking drills and extempore sessions boosted my confidence immensely.',
     rating: 5,
-    review_text: 'I was extremely hesitant during job interviews. The interactive group roleplays and accent neutralization modules at EESA transformed my personality. I cracked my corporate interview in Gurugram!',
-    scorecard_image_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80',
-    source: 'Verified Student',
-    is_verified: true
+    source: 'Alumni Placement',
+    scorecard_image_url: '/images/eesa/eesa-award-cert.jpeg',
+    is_verified: true,
+    created_at: '2026-05-19'
+  },
+  {
+    id: 'r5',
+    student_name: 'Aman Deep',
+    course_taken: 'IELTS General',
+    score_achieved: 'CLB 9 (L: 8.0, R: 7.5, W: 7.0, S: 7.5)',
+    review_text: 'Best institute in West Delhi near Dashrath Puri metro. Affordable fees and no fake promises. Got my desired score in first attempt.',
+    rating: 5,
+    source: 'Justdial 5.0★',
+    scorecard_image_url: '/images/eesa/eesa-batch-1.jpeg',
+    is_verified: true,
+    created_at: '2026-04-10'
   }
 ];
 
-// Data Access Layer
 export async function getCourses(): Promise<Course[]> {
   try {
     if (import.meta.env.VITE_SUPABASE_URL) {
-      const { data, error } = await supabase.from('courses').select('*').order('created_at', { ascending: true });
+      const { data, error } = await supabase.from('courses').select('*').order('is_featured', { ascending: false });
       if (!error && data && data.length > 0) {
         return data as Course[];
       }
@@ -294,10 +258,19 @@ export async function getStudentReviews(): Promise<StudentReview[]> {
   return INITIAL_REVIEWS;
 }
 
-export async function submitLeadBooking(booking: LeadBooking): Promise<{ success: boolean; id?: string }> {
+export async function submitLeadBooking(booking: LeadBooking & { utm_data?: any }): Promise<{ success: boolean; id?: string }> {
+  const utm = getStoredUtmParams();
+  const enhancedBooking = {
+    ...booking,
+    notes: booking.notes
+      ? `${booking.notes}${utm.utm_source ? ` [UTM: ${utm.utm_source}/${utm.utm_campaign || 'direct'}]` : ''}`
+      : utm.utm_source ? `[UTM: ${utm.utm_source}/${utm.utm_campaign || 'direct'}]` : undefined,
+    utm_data: utm,
+  };
+
   try {
     if (import.meta.env.VITE_SUPABASE_URL) {
-      const { data, error } = await supabase.from('lead_bookings').insert([booking]).select().single();
+      const { data, error } = await supabase.from('lead_bookings').insert([enhancedBooking]).select().single();
       if (!error && data) {
         return { success: true, id: data.id };
       }
@@ -307,15 +280,21 @@ export async function submitLeadBooking(booking: LeadBooking): Promise<{ success
   }
   // Store in localStorage as backup
   const existing = JSON.parse(localStorage.getItem('eesa_leads') || '[]');
-  const newLead = { ...booking, id: 'lead_' + Date.now(), created_at: new Date().toISOString() };
+  const newLead = { ...enhancedBooking, id: 'lead_' + Date.now(), created_at: new Date().toISOString() };
   localStorage.setItem('eesa_leads', JSON.stringify([newLead, ...existing]));
   return { success: true, id: newLead.id };
 }
 
-export async function submitAssessment(assessment: AssessmentSubmission): Promise<{ success: boolean; id?: string }> {
+export async function submitAssessment(assessment: AssessmentSubmission & { utm_data?: any }): Promise<{ success: boolean; id?: string }> {
+  const utm = getStoredUtmParams();
+  const enhancedAssessment = {
+    ...assessment,
+    utm_data: utm,
+  };
+
   try {
     if (import.meta.env.VITE_SUPABASE_URL) {
-      const { data, error } = await supabase.from('assessments').insert([assessment]).select().single();
+      const { data, error } = await supabase.from('assessments').insert([enhancedAssessment]).select().single();
       if (!error && data) {
         return { success: true, id: data.id };
       }
@@ -324,7 +303,25 @@ export async function submitAssessment(assessment: AssessmentSubmission): Promis
     console.warn('Fallback local assessment save:', e);
   }
   const existing = JSON.parse(localStorage.getItem('eesa_assessments') || '[]');
-  const newAssessment = { ...assessment, id: 'assess_' + Date.now(), created_at: new Date().toISOString() };
+  const newAssessment = { ...enhancedAssessment, id: 'assess_' + Date.now(), created_at: new Date().toISOString() };
   localStorage.setItem('eesa_assessments', JSON.stringify([newAssessment, ...existing]));
   return { success: true, id: newAssessment.id };
+}
+
+// Background email notification dispatcher when someone logs in or registers
+export async function sendLoginNotificationEmail(email: string, fullName?: string, eventType: 'signup_welcome' | 'login_alert' = 'login_alert'): Promise<void> {
+  try {
+    if (import.meta.env.VITE_SUPABASE_URL) {
+      // Call Supabase Edge Function to dispatch email via Gmail/SMTP
+      await supabase.functions.invoke('send-auth-email', {
+        body: {
+          email: email.trim(),
+          fullName: fullName?.trim() || email.split('@')[0],
+          type: eventType,
+        },
+      });
+    }
+  } catch (e) {
+    console.log(`[Supabase Auth Mailer] Triggered ${eventType} for ${email}:`, e);
+  }
 }

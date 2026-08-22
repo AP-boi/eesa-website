@@ -34,7 +34,7 @@ export const ScorecardLightbox: React.FC<ScorecardLightboxProps> = ({ review, on
         <div className="p-6 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
           <div className="md:col-span-7 bg-slate-100 dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 max-h-[60vh] flex items-center justify-center">
             <img
-              src={review.scorecard_image_url || 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&auto=format&fit=crop&q=80'}
+              src={review.scorecard_image_url || '/images/eesa/ielts-scorecard.jpg'}
               alt={review.student_name + ' Scorecard'}
               className="w-full h-auto object-cover max-h-[60vh]"
             />

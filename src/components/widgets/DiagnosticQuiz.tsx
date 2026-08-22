@@ -190,7 +190,7 @@ export const DiagnosticQuiz: React.FC<DiagnosticQuizProps> = ({ courses, onSelec
             </div>
 
             <p className="text-xs text-slate-600 dark:text-slate-300 max-w-md mx-auto">
-              Based on your response syntax and target goals, Prashant Sir recommends enrolling in:
+              Based on your response syntax and target goals, EESA Academic Counselors recommend enrolling in:
             </p>
 
             <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 text-left max-w-md mx-auto shadow-xs">

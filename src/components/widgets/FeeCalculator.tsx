@@ -11,7 +11,7 @@ export const FeeCalculator: React.FC<FeeCalculatorProps> = ({ courses, onUnlockD
   const [selectedCategory, setSelectedCategory] = useState<string>('international_test_prep');
   const [selectedCourseId, setSelectedCourseId] = useState<string>('c2');
   const [deliveryMode, setDeliveryMode] = useState<'offline' | 'online_live' | 'one_on_one'>('offline');
-  const [batchFormat, setBatchFormat] = useState<'group' | 'vip'>('group');
+  const [batchFormat, setBatchFormat] = useState<'group' | 'personalized'>('group');
   const [durationWeeks, setDurationWeeks] = useState<number>(8);
 
   const currentCourse = courses.find((c) => c.id === selectedCourseId) || courses[0];
@@ -21,7 +21,7 @@ export const FeeCalculator: React.FC<FeeCalculatorProps> = ({ courses, onUnlockD
   let feeMultiplier = 1.0;
   if (deliveryMode === 'online_live') feeMultiplier = 0.9;
   if (deliveryMode === 'one_on_one') feeMultiplier = 1.4;
-  if (batchFormat === 'vip') feeMultiplier *= 1.25;
+  if (batchFormat === 'personalized') feeMultiplier *= 1.25;
 
   const rawFee = Math.round((basePackage * (durationWeeks / 8)) * feeMultiplier);
   const earlyBirdDiscount = Math.round(rawFee * 0.15);
@@ -108,7 +108,7 @@ export const FeeCalculator: React.FC<FeeCalculatorProps> = ({ courses, onUnlockD
                 {[
                   { id: 'offline', title: 'Offline AC Classroom' },
                   { id: 'online_live', title: 'Live Online' },
-                  { id: 'one_on_one', title: '1-on-1 VIP Mentorship' },
+                  { id: 'one_on_one', title: '1-on-1 Personalized' },
                 ].map((mode) => (
                   <button
                     key={mode.id}
@@ -145,14 +145,14 @@ export const FeeCalculator: React.FC<FeeCalculatorProps> = ({ courses, onUnlockD
                   </button>
                   <button
                     type="button"
-                    onClick={() => setBatchFormat('vip')}
+                    onClick={() => setBatchFormat('personalized')}
                     className={`py-2 px-2.5 rounded-lg text-xs font-semibold border transition-all ${
-                      batchFormat === 'vip'
+                      batchFormat === 'personalized'
                         ? 'bg-emerald-600 border-emerald-500 text-white'
                         : 'bg-slate-800 border-slate-700 text-slate-400'
                     }`}
                   >
-                    VIP Mentorship
+                    1-on-1 Coaching
                   </button>
                 </div>
               </div>

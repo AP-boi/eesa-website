@@ -7,7 +7,11 @@ import { Course, StudentReview } from '../types/database';
 import { FeeCalculator } from '../components/widgets/FeeCalculator';
 import { DiagnosticQuiz } from '../components/widgets/DiagnosticQuiz';
 import { ScorecardLightbox } from '../components/widgets/ScorecardLightbox';
+import { FAQSection } from '../components/widgets/FAQSection';
+import { LastUpdatedBadge } from '../components/ui/LastUpdatedBadge';
+import { CopyButton } from '../components/ui/CopyButton';
 import { MagneticButton } from '@/components/ui/magnetic-button';
+import { SEO } from '@/components/common/SEO';
 
 interface HomeProps {
   courses: Course[];
@@ -26,6 +30,11 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
 
   return (
     <div className="space-y-20 sm:space-y-32 pb-24">
+      <SEO
+        title="Spoken English & Overseas Test Prep Institute in West Delhi"
+        description="EESA Academy (Dashrath Puri Metro Gate 1, West Delhi). IELTS Band 8.0+, PTE 79+, OET Grade B & Spoken English fluency with 1-on-1 mentorship."
+        canonicalUrl="/"
+      />
       
       {/* CLEAN MINIMAL HERO SECTION */}
       <section className="relative pt-12 sm:pt-16 pb-20 bg-gradient-to-b from-slate-100/60 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900/60 dark:to-slate-950 border-b border-slate-200/60 dark:border-slate-800">
@@ -34,9 +43,12 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
             
             {/* Left Column: Headline & Value Prop */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 bg-blue-50/80 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/80 dark:border-blue-800 px-3.5 py-1 rounded-full text-xs font-semibold">
-                <Sparkles className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-                <span>West Delhi's Premier English & Test Prep Institute</span>
+              <div className="flex flex-wrap items-center gap-2">
+                <div className="inline-flex items-center gap-2 bg-blue-50/80 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/80 dark:border-blue-800 px-3.5 py-1 rounded-full text-xs font-semibold">
+                  <Sparkles className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                  <span>West Delhi's Premier English & Test Prep Institute</span>
+                </div>
+                <LastUpdatedBadge dateString="August 2026" version="Curriculum v4.2" />
               </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.15]">
@@ -48,7 +60,7 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
 
               <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal max-w-2xl">
                 Transforming confidence, IELTS (Band 8.0+), PTE (79+), OET (Grade B), and global careers for{' '}
-                <strong className="text-slate-900 dark:text-white font-semibold">5,000+ alumni</strong> across West Delhi with 1-on-1 mentorship by senior mentor <strong className="text-blue-600 dark:text-blue-400 font-semibold">Prashant Sir</strong>.
+                <strong className="text-slate-900 dark:text-white font-semibold">5,000+ alumni</strong> across West Delhi with 1-on-1 mentorship designed by Founder <strong className="text-blue-600 dark:text-blue-400 font-semibold">Neetu Devi</strong> and certified master trainers.
               </p>
 
               {/* Magnetic Action Buttons */}
@@ -75,19 +87,19 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
 
               {/* Minimal Trust Metrics Bar */}
               <div className="pt-8 border-t border-slate-200/80 dark:border-slate-800 grid grid-cols-2 sm:grid-cols-4 gap-6 text-slate-700 dark:text-slate-300">
-                <div>
+                <div className="p-2 rounded-xl hover:bg-slate-100/60 dark:hover:bg-slate-900/60 transition-colors">
                   <span className="text-2xl font-black text-slate-900 dark:text-white block">4.9 ★</span>
                   <span className="text-xs text-slate-500 dark:text-slate-400">315+ Justdial Reviews</span>
                 </div>
-                <div>
+                <div className="p-2 rounded-xl hover:bg-slate-100/60 dark:hover:bg-slate-900/60 transition-colors">
                   <span className="text-2xl font-black text-slate-900 dark:text-white block">5,000+</span>
                   <span className="text-xs text-slate-500 dark:text-slate-400">Trained Alumni</span>
                 </div>
-                <div>
+                <div className="p-2 rounded-xl hover:bg-slate-100/60 dark:hover:bg-slate-900/60 transition-colors">
                   <span className="text-2xl font-black text-slate-900 dark:text-white block">Max 8</span>
                   <span className="text-xs text-slate-500 dark:text-slate-400">Small Batch Limit</span>
                 </div>
-                <div>
+                <div className="p-2 rounded-xl hover:bg-slate-100/60 dark:hover:bg-slate-900/60 transition-colors">
                   <span className="text-2xl font-black text-slate-900 dark:text-white block">100%</span>
                   <span className="text-xs text-slate-500 dark:text-slate-400">Placement Support</span>
                 </div>
@@ -97,7 +109,7 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
 
             {/* Right Column: Clean Registration Form Card */}
             <div className="lg:col-span-5">
-              <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-8 shadow-md border border-slate-200/80 dark:border-slate-800 relative">
+              <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-8 shadow-md border border-slate-200/80 dark:border-slate-800 relative hover:shadow-xl transition-shadow duration-300">
                 <div className="absolute -top-3 right-6 bg-emerald-600 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-0.5 rounded-full">
                   Instant Registration
                 </div>
@@ -106,7 +118,7 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
                   Book a Free Demo Class
                 </h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mb-6">
-                  Experience Prashant Sir's teaching methodology with zero obligation.
+                  Experience EESA Academy's communicative teaching methodology with zero obligation.
                 </p>
 
                 <form
@@ -144,7 +156,7 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
                     <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                       Target Program
                     </label>
-                    <select className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-xs outline-none focus:ring-2 focus:ring-blue-600 text-slate-900 dark:text-white">
+                    <select className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-xs outline-none focus:ring-2 focus:ring-blue-600 text-slate-900 dark:text-white cursor-pointer">
                       <option>Spoken English & Fluency</option>
                       <option>IELTS Academic / General (Band 7.5+)</option>
                       <option>PTE Academic Masterclass</option>
@@ -163,10 +175,11 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
                     </button>
                   </MagneticButton>
 
-                  <p className="text-[11px] text-slate-500 dark:text-slate-400 text-center flex items-center justify-center gap-1 pt-1">
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400 text-center flex items-center justify-center gap-2 pt-1">
                     <MapPin className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                     <span>Dashrath Puri Metro Gate 1</span>
-                  </p>
+                    <CopyButton textToCopy="Dashrath Puri Metro Station Gate 1, New Delhi - 110045" iconOnly />
+                  </div>
                 </form>
               </div>
             </div>
@@ -201,7 +214,7 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
             <button
               key={tab.id}
               onClick={() => setActiveCategoryTab(tab.id)}
-              className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
+              className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 activeCategoryTab === tab.id
                   ? 'bg-slate-900 dark:bg-blue-600 text-white shadow-xs'
                   : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800'
@@ -217,7 +230,7 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
           {filteredCourses.map((course) => (
             <div
               key={course.id}
-              className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
+              className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:shadow-xl hover:-translate-y-1 hover:border-blue-500/40 transition-all duration-300 flex flex-col justify-between group"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between gap-2">
@@ -294,7 +307,7 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
 
             <button
               onClick={() => onNavigate('about')}
-              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition-all shrink-0"
+              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer"
             >
               <span>View Full Campus Tour</span>
               <ArrowRight className="w-4 h-4" />
@@ -302,7 +315,7 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="bg-slate-800/80 rounded-2xl overflow-hidden border border-slate-700 group hover:border-blue-500 transition-all">
+            <div className="bg-slate-800/80 rounded-2xl overflow-hidden border border-slate-700 group hover:border-blue-500 hover:-translate-y-1 transition-all duration-300">
               <div className="h-44 overflow-hidden bg-slate-950">
                 <img
                   src="/images/eesa/eesa-classroom-1.jpeg"
@@ -316,7 +329,7 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
               </div>
             </div>
 
-            <div className="bg-slate-800/80 rounded-2xl overflow-hidden border border-slate-700 group hover:border-blue-500 transition-all">
+            <div className="bg-slate-800/80 rounded-2xl overflow-hidden border border-slate-700 group hover:border-blue-500 hover:-translate-y-1 transition-all duration-300">
               <div className="h-44 overflow-hidden bg-slate-950">
                 <img
                   src="/images/eesa/eesa-ielts-session-1.jpeg"
@@ -330,7 +343,7 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
               </div>
             </div>
 
-            <div className="bg-slate-800/80 rounded-2xl overflow-hidden border border-slate-700 group hover:border-blue-500 transition-all">
+            <div className="bg-slate-800/80 rounded-2xl overflow-hidden border border-slate-700 group hover:border-blue-500 hover:-translate-y-1 transition-all duration-300">
               <div className="h-44 overflow-hidden bg-slate-950">
                 <img
                   src="/images/eesa/eesa-student-activity-1.jpeg"
@@ -344,7 +357,7 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
               </div>
             </div>
 
-            <div className="bg-slate-800/80 rounded-2xl overflow-hidden border border-slate-700 group hover:border-blue-500 transition-all">
+            <div className="bg-slate-800/80 rounded-2xl overflow-hidden border border-slate-700 group hover:border-blue-500 hover:-translate-y-1 transition-all duration-300">
               <div className="h-44 overflow-hidden bg-slate-950">
                 <img
                   src="/images/eesa/eesa-batch-1.jpeg"
@@ -433,7 +446,7 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
           {reviews.map((rev) => (
             <div
               key={rev.id}
-              className="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
+              className="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
                 <div
@@ -441,7 +454,7 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
                   className="relative h-40 rounded-xl overflow-hidden mb-3 cursor-pointer group bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700"
                 >
                   <img
-                    src={rev.scorecard_image_url || 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&auto=format&fit=crop&q=80'}
+                    src={rev.scorecard_image_url || '/images/eesa/ielts-scorecard.jpg'}
                     alt={rev.student_name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -468,6 +481,9 @@ export const Home: React.FC<HomeProps> = ({ courses, reviews, onNavigate, onOpen
           ))}
         </div>
       </section>
+
+      {/* EXPANDABLE FAQ SECTION */}
+      <FAQSection onOpenDemoModal={() => onOpenDemoModal(undefined, 'free_demo')} />
 
       {/* SCORECARD LIGHTBOX */}
       <ScorecardLightbox
