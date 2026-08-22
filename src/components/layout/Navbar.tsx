@@ -56,10 +56,10 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header
-      className={`sticky top-0 z-40 w-full transition-all duration-300 ${
+      className={`sticky top-0 z-40 w-full transition-all duration-300 bg-white dark:bg-slate-950 ${
         isScrolled
-          ? 'bg-white/95 dark:bg-slate-950/95 backdrop-blur-md shadow-md border-b border-slate-200/90 dark:border-slate-800'
-          : 'bg-white/90 dark:bg-slate-950/90 backdrop-blur-sm border-b border-slate-200/60 dark:border-slate-800/60'
+          ? 'shadow-md border-b border-slate-200 dark:border-slate-800'
+          : 'border-b border-slate-200/80 dark:border-slate-800/80'
       }`}
     >
       <div className="w-full max-w-[1536px] mx-auto px-3 sm:px-5 lg:px-6 xl:px-8">
@@ -91,10 +91,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* 2. Aceternity Center Hover Navigation Menu */}
-          <div className="hidden lg:flex items-center justify-center">
+          <div className="hidden lg:flex items-center justify-center flex-1">
             <Menu setActive={setActiveHoverMenu}>
-              <MenuItem item="Programs & Courses">
-                <div className="grid grid-cols-2 gap-6 p-2 text-xs">
+              <MenuItem item="Programs & Courses" dropdownPosition="left">
+                <div className="grid grid-cols-2 gap-4 p-1 text-xs w-[520px]">
                   <ProductItem
                     title="Spoken English"
                     href="#"
@@ -126,8 +126,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </div>
               </MenuItem>
 
-              <MenuItem item="Study Abroad">
-                <div className="flex flex-col space-y-2 text-xs w-48">
+              <MenuItem item="Study Abroad" dropdownPosition="center">
+                <div className="flex flex-col space-y-1.5 text-xs w-52 p-1">
                   <HoveredLink href="#" onClick={() => onNavigate('study-abroad')}>
                     University Shortlisting & SOP
                   </HoveredLink>
@@ -140,8 +140,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </div>
               </MenuItem>
 
-              <MenuItem item="About & Founder">
-                <div className="flex flex-col space-y-2 text-xs w-48">
+              <MenuItem item="About & Founder" dropdownPosition="center">
+                <div className="flex flex-col space-y-1.5 text-xs w-56 p-1">
                   <HoveredLink href="#" onClick={() => onNavigate('founder')}>
                     Meet Founder Neetu Devi
                   </HoveredLink>
@@ -157,8 +157,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </div>
               </MenuItem>
 
-              <MenuItem item="Contact & Location">
-                <div className="flex flex-col space-y-2 text-xs w-48">
+              <MenuItem item="Contact & Location" dropdownPosition="right">
+                <div className="flex flex-col space-y-1.5 text-xs w-52 p-1">
                   <HoveredLink href="#" onClick={() => onNavigate('contact')}>
                     Dashrath Puri Campus Map
                   </HoveredLink>

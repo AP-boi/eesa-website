@@ -2,11 +2,10 @@
 import React, { useRef, useState, createContext, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const transition = {
-  type: "spring" as const,
-  mass: 0.5,
-  damping: 14,
-  stiffness: 130,
+const dropdownTransition = {
+  y: { type: "spring" as const, stiffness: 350, damping: 28 },
+  scale: { type: "spring" as const, stiffness: 350, damping: 28 },
+  opacity: { duration: 0.12, ease: "easeOut" as const },
 };
 
 interface MenuContextType {
@@ -22,7 +21,7 @@ const MenuContext = createContext<MenuContextType | null>(null);
 export const Menu = ({
   setActive,
   children,
-  closeDelay = 500, // 0.5-second buffer delay as requested
+  closeDelay = 500, // 0.5-second buffer delay
 }: {
   setActive: (item: string | null) => void;
   children: React.ReactNode;
@@ -69,7 +68,7 @@ export const Menu = ({
       <nav
         onMouseEnter={cancelClose}
         onMouseLeave={() => closeMenuDelayed(closeDelay)}
-        className="relative rounded-full border border-slate-200/90 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 shadow-xs flex justify-center items-center space-x-1 sm:space-x-1.5 px-3 py-1"
+        className="relative rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm flex justify-center items-center space-x-1 sm:space-x-1.5 px-3 py-1.5 z-30"
       >
         {children}
       </nav>
@@ -82,11 +81,13 @@ export const MenuItem = ({
   active: _ignoredActive,
   item,
   children,
+  dropdownPosition = "center",
 }: {
   setActive?: (item: string | null) => void;
   active?: string | null;
   item: string;
   children?: React.ReactNode;
+  dropdownPosition?: "center" | "left" | "right";
 }) => {
   const menuCtx = useContext(MenuContext);
   const isItemActive = menuCtx ? menuCtx.active === item : false;
@@ -96,7 +97,7 @@ export const MenuItem = ({
   };
 
   const handleMouseLeave = () => {
-    menuCtx?.closeMenuDelayed(500); // 0.5s grace period
+    menuCtx?.closeMenuDelayed(500); // 0.5s delay
   };
 
   const handleClick = (e: React.MouseEvent) => {
@@ -108,6 +109,13 @@ export const MenuItem = ({
     }
   };
 
+  const positionClass =
+    dropdownPosition === "left"
+      ? "left-0"
+      : dropdownPosition === "right"
+      ? "right-0"
+      : "left-1/2 -translate-x-1/2";
+
   return (
     <div
       onMouseEnter={handleMouseEnter}
@@ -117,10 +125,11 @@ export const MenuItem = ({
       <button
         type="button"
         onClick={handleClick}
-        className={`cursor-pointer font-semibold text-xs transition-all whitespace-nowrap px-3 py-1.5 rounded-full select-none flex items-center justify-center leading-none ${
+        onFocus={handleMouseEnter}
+        className={`cursor-pointer font-semibold text-xs transition-all whitespace-nowrap px-3.5 py-1.5 rounded-full select-none flex items-center justify-center leading-none ${
           isItemActive
-            ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/70 shadow-2xs font-bold"
-            : "text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/80"
+            ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/80 shadow-xs font-bold"
+            : "text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800"
         }`}
       >
         {item}
@@ -129,19 +138,26 @@ export const MenuItem = ({
       <AnimatePresence>
         {isItemActive && children && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.96, y: 6 }}
+            initial={{ opacity: 0, scale: 0.97, y: 6 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.96, y: 6 }}
-            transition={transition}
+            exit={{ opacity: 0, scale: 0.97, y: 6 }}
+            transition={dropdownTransition}
             onMouseEnter={() => menuCtx?.cancelClose()}
             onMouseLeave={() => menuCtx?.closeMenuDelayed(500)}
-            className="absolute top-[calc(100%_+_0.5rem)] left-1/2 transform -translate-x-1/2 z-50 pt-2 pointer-events-auto"
+            className={`absolute top-full pt-3 z-50 pointer-events-auto ${positionClass}`}
           >
             {/* Invisible hover bridge connecting trigger button to popup */}
             <div className="absolute -top-3 left-0 right-0 h-4 bg-transparent" />
 
-            <div className="bg-white dark:bg-slate-900 backdrop-blur-md rounded-2xl overflow-hidden border border-slate-200/90 dark:border-slate-800 shadow-2xl">
-              <div className="w-max h-full p-4">
+            {/* 100% Solid Opaque Card Container with Deep Drop Shadow */}
+            <div
+              className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.35)] ring-1 ring-black/5 dark:ring-white/10"
+              style={{ backgroundColor: '#ffffff' }}
+            >
+              <div
+                className="w-max h-full p-4 text-slate-900 dark:text-white"
+                style={{ backgroundColor: '#ffffff' }}
+              >
                 {children}
               </div>
             </div>
@@ -181,20 +197,21 @@ export const ProductItem = ({
     <a
       href={href}
       onClick={handleClick}
-      className="flex space-x-3 group p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/60 transition-colors cursor-pointer text-left items-center"
+      className="flex space-x-3 group p-2.5 rounded-xl hover:bg-slate-100 transition-colors cursor-pointer text-left items-center"
+      style={{ backgroundColor: '#ffffff' }}
     >
       <img
         src={src}
         width={100}
         height={60}
         alt={title}
-        className="shrink-0 rounded-lg shadow-xs object-cover group-hover:scale-105 transition-transform duration-300 w-24 h-16"
+        className="shrink-0 rounded-lg shadow-xs object-cover group-hover:scale-105 transition-transform duration-300 w-24 h-16 border border-slate-200"
       />
       <div>
-        <h4 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+        <h4 className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
           {title}
         </h4>
-        <p className="text-slate-500 dark:text-slate-400 text-xs max-w-[12rem] leading-tight mt-0.5">
+        <p className="text-slate-600 text-xs max-w-[13rem] leading-snug mt-0.5 font-normal">
           {description}
         </p>
       </div>
@@ -219,7 +236,8 @@ export const HoveredLink = ({ children, onClick, ...rest }: any) => {
     <a
       {...rest}
       onClick={handleClick}
-      className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/80 px-2.5 py-2 rounded-lg transition-colors font-medium text-xs block cursor-pointer text-left"
+      className="text-slate-700 hover:text-blue-600 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors font-medium text-xs block cursor-pointer text-left"
+      style={{ backgroundColor: '#ffffff' }}
     >
       {children}
     </a>
