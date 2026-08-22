@@ -6,7 +6,7 @@ const transition = {
   type: "spring" as const,
   mass: 0.5,
   damping: 14,
-  stiffness: 120,
+  stiffness: 130,
 };
 
 interface MenuContextType {
@@ -22,7 +22,7 @@ const MenuContext = createContext<MenuContextType | null>(null);
 export const Menu = ({
   setActive,
   children,
-  closeDelay = 2000, // 2-second grace period as requested
+  closeDelay = 500, // 0.5-second buffer delay as requested
 }: {
   setActive: (item: string | null) => void;
   children: React.ReactNode;
@@ -69,7 +69,7 @@ export const Menu = ({
       <nav
         onMouseEnter={cancelClose}
         onMouseLeave={() => closeMenuDelayed(closeDelay)}
-        className="relative rounded-full border border-slate-200/80 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 shadow-xs flex justify-center items-center space-x-1.5 sm:space-x-2.5 px-3.5 py-1.5"
+        className="relative rounded-full border border-slate-200/90 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 shadow-xs flex justify-center items-center space-x-1 sm:space-x-1.5 px-3 py-1"
       >
         {children}
       </nav>
@@ -96,7 +96,7 @@ export const MenuItem = ({
   };
 
   const handleMouseLeave = () => {
-    menuCtx?.closeMenuDelayed(2000);
+    menuCtx?.closeMenuDelayed(500); // 0.5s grace period
   };
 
   const handleClick = (e: React.MouseEvent) => {
@@ -112,15 +112,15 @@ export const MenuItem = ({
     <div
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="relative"
+      className="relative flex items-center justify-center"
     >
       <button
         type="button"
         onClick={handleClick}
-        className={`cursor-pointer font-semibold text-xs transition-all whitespace-nowrap px-3 py-1.5 rounded-full select-none ${
+        className={`cursor-pointer font-semibold text-xs transition-all whitespace-nowrap px-3 py-1.5 rounded-full select-none flex items-center justify-center leading-none ${
           isItemActive
-            ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 shadow-xs"
-            : "text-slate-800 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100/70 dark:hover:bg-slate-800/70"
+            ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/70 shadow-2xs font-bold"
+            : "text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/80"
         }`}
       >
         {item}
@@ -129,12 +129,12 @@ export const MenuItem = ({
       <AnimatePresence>
         {isItemActive && children && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 6 }}
+            initial={{ opacity: 0, scale: 0.96, y: 6 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 6 }}
+            exit={{ opacity: 0, scale: 0.96, y: 6 }}
             transition={transition}
             onMouseEnter={() => menuCtx?.cancelClose()}
-            onMouseLeave={() => menuCtx?.closeMenuDelayed(2000)}
+            onMouseLeave={() => menuCtx?.closeMenuDelayed(500)}
             className="absolute top-[calc(100%_+_0.5rem)] left-1/2 transform -translate-x-1/2 z-50 pt-2 pointer-events-auto"
           >
             {/* Invisible hover bridge connecting trigger button to popup */}
@@ -181,7 +181,7 @@ export const ProductItem = ({
     <a
       href={href}
       onClick={handleClick}
-      className="flex space-x-3 group p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/60 transition-colors cursor-pointer"
+      className="flex space-x-3 group p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/60 transition-colors cursor-pointer text-left items-center"
     >
       <img
         src={src}
@@ -219,7 +219,7 @@ export const HoveredLink = ({ children, onClick, ...rest }: any) => {
     <a
       {...rest}
       onClick={handleClick}
-      className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/80 px-2.5 py-2 rounded-lg transition-colors font-medium text-xs block cursor-pointer"
+      className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/80 px-2.5 py-2 rounded-lg transition-colors font-medium text-xs block cursor-pointer text-left"
     >
       {children}
     </a>
