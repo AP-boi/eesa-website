@@ -91,9 +91,9 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* 2. Aceternity Center Hover Navigation Menu */}
-          <div className="hidden xl:flex items-center justify-center shrink-0">
+          <div className="hidden lg:flex items-center justify-center shrink-0">
             <Menu setActive={setActiveHoverMenu}>
-              <MenuItem setActive={setActiveHoverMenu} active={activeHoverMenu} item="Programs & Courses">
+              <MenuItem item="Programs & Courses">
                 <div className="grid grid-cols-2 gap-6 p-2 text-xs">
                   <ProductItem
                     title="Spoken English"
@@ -126,7 +126,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </div>
               </MenuItem>
 
-              <MenuItem setActive={setActiveHoverMenu} active={activeHoverMenu} item="Study Abroad">
+              <MenuItem item="Study Abroad">
                 <div className="flex flex-col space-y-2 text-xs w-48">
                   <HoveredLink href="#" onClick={() => onNavigate('study-abroad')}>
                     University Shortlisting & SOP
@@ -140,7 +140,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </div>
               </MenuItem>
 
-              <MenuItem setActive={setActiveHoverMenu} active={activeHoverMenu} item="About & Founder">
+              <MenuItem item="About & Founder">
                 <div className="flex flex-col space-y-2 text-xs w-48">
                   <HoveredLink href="#" onClick={() => onNavigate('founder')}>
                     Meet Founder Neetu Devi
@@ -157,7 +157,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </div>
               </MenuItem>
 
-              <MenuItem setActive={setActiveHoverMenu} active={activeHoverMenu} item="Contact & Location">
+              <MenuItem item="Contact & Location">
                 <div className="flex flex-col space-y-2 text-xs w-48">
                   <HoveredLink href="#" onClick={() => onNavigate('contact')}>
                     Dashrath Puri Campus Map
@@ -173,8 +173,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             </Menu>
           </div>
 
-          {/* 3. Desktop Action CTAs & Tools (Visible on xl and above) */}
-          <div className="hidden xl:flex items-center gap-1.5 2xl:gap-2 shrink-0">
+          {/* 3. Desktop Action CTAs & Tools (Visible on lg and above) */}
+          <div className="hidden lg:flex items-center gap-1.5 2xl:gap-2 shrink-0">
             
             {/* Site Search Button (Ctrl+K) */}
             {onOpenSearch && (
@@ -240,7 +240,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
             )}
 
-            {/* WhatsApp CTA (Icon + text on 2xl, icon on xl) */}
+            {/* WhatsApp CTA */}
             <MagneticButton strength={0.4} maxDistance={30}>
               <a
                 href="https://wa.me/919810126691?text=Hi%20EESA%20Academy,%20I%20want%20to%20enquire%20about%20your%20courses."
@@ -265,8 +265,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             </MagneticButton>
           </div>
 
-          {/* Mobile & Tablet Right Controls (Visible below xl: <1280px) */}
-          <div className="flex xl:hidden items-center gap-1 sm:gap-1.5 shrink-0">
+          {/* Mobile & Tablet Right Controls (Visible below lg) */}
+          <div className="flex lg:hidden items-center gap-1 sm:gap-1.5 shrink-0">
             {onOpenSearch && (
               <button
                 onClick={onOpenSearch}
@@ -305,7 +305,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="xl:hidden bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 px-4 pt-3 pb-6 space-y-3 animate-fadeIn shadow-xl">
+        <div className="lg:hidden bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 px-4 pt-3 pb-6 space-y-3 animate-fadeIn shadow-xl">
           
           {/* Quick Search inside Mobile Drawer */}
           {onOpenSearch && (
